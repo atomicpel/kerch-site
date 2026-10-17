@@ -1,0 +1,13 @@
+[Unit]
+Description=Kerch CCTV site + MAX lead notifications
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/kerch-site
+ExecStart=/usr/bin/python3 /opt/kerch-site/server.py
+Restart=always
+RestartSec=3
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
