@@ -48,6 +48,9 @@ HOST = os.environ.get("HOST", "127.0.0.1")
 PORT = int(os.environ.get("PORT", "8080"))
 TRUST_PROXY = os.environ.get("TRUST_PROXY", "1") == "1"
 
+RETENTION_DAYS = 365   # срок хранения заявок, как в политике
+CONSENT_VERSION = "2026-10-17"  # редакция текста согласия
+
 RATE_LIMIT = 5          # заявок
 RATE_WINDOW = 600       # за 10 минут с одного IP
 _hits = {}
@@ -95,6 +98,38 @@ def rate_limited(ip):
             hits.append(now)
         _hits[ip] = hits
         return limited
+
+
+def prune_leads():
+    """Удаляет заявки старше RETENTION_DAYS. Вызывается при старте и раз в сутки."""
+    if not os.path.exists(LEADS_FILE):
+        return
+    border = time.time() - RETENTION_DAYS * 86400
+    with _lock:
+        with open(LEADS_FILE, encoding="utf-8") as fh:
+            lines = fh.readlines()
+        keep = []
+        for line in lines:
+            try:
+                if json.loads(line).get("ts", 0) >= border:
+                    keep.append(line)
+            except ValueError:
+                pass
+        if len(keep) != len(lines):
+            tmp = LEADS_FILE + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as fh:
+                fh.writelines(keep)
+            os.replace(tmp, LEADS_FILE)
+            sys.stderr.write(f"[leads] удалено старых заявок: {len(lines) - len(keep)}\n")
+
+
+def prune_loop():
+    while True:
+        try:
+            prune_leads()
+        except Exception as e:
+            sys.stderr.write(f"[leads] ошибка очистки: {e}\n")
+        time.sleep(86400)
 
 
 def clean(value, limit):
@@ -148,13 +183,17 @@ class Handler(SimpleHTTPRequestHandler):
             return self.reply(400, {"error": "Укажите имя."})
         if not 10 <= len(digits) <= 15:
             return self.reply(400, {"error": "Проверьте номер телефона."})
+        if data.get("consent") is not True:
+            return self.reply(400, {"error": "Отметьте согласие на обработку персональных данных."})
 
         ip = self.client_ip()
         if rate_limited(ip):
             return self.reply(429, {"error": "Слишком много заявок. Позвоните: 8 989 629-69-39."})
 
         when = datetime.now(MSK).strftime("%d.%m.%Y %H:%M")
-        lead = {"time": when, "name": name, "phone": phone, "object": obj, "comment": comment, "ip": ip}
+        lead = {"time": when, "ts": int(time.time()), "name": name, "phone": phone, "object": obj,
+                "comment": comment, "ip": ip, "consent": True, "consent_version": CONSENT_VERSION,
+                "user_agent": clean(self.headers.get("User-Agent"), 300)}
         with _lock, open(LEADS_FILE, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(lead, ensure_ascii=False) + "\n")
 
@@ -190,6 +229,7 @@ def main():
         return
     if not MAX_TOKEN or not (MAX_USER_ID or MAX_CHAT_ID):
         print("Внимание: MAX не настроен, заявки будут только сохраняться в leads.jsonl")
+    threading.Thread(target=prune_loop, daemon=True).start()
     srv = ThreadingHTTPServer((HOST, PORT), Handler)
     print(f"Сайт: http://{HOST}:{PORT}")
     srv.serve_forever()
