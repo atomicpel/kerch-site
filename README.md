@@ -53,6 +53,8 @@ cd /opt/kerch-site && sudo git -c safe.directory=/opt/kerch-site pull && sudo sy
 
 ## 5. Автозапуск и домен
 
+Сейчас сайт работает на https://s.atomicpel.cloud-ip.cc через Caddy (блок из `deploy/Caddyfile.snippet` дописан в конец `/etc/caddy/Caddyfile`, применение: `sudo systemctl reload caddy`). Вариант с nginx ниже — на случай другого сервера.
+
 ```bash
 sudo chown -R www-data:www-data /opt/kerch-site
 sudo chmod 600 /opt/kerch-site/.env
