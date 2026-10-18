@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Павел Андреевич — камеры, серверы, сети</title>
-<meta name="description" content="Проекты Павла из Керчи: домашняя система видеонаблюдения с распознаванием людей и машин, панель RTSP для Astra Linux, свой сервер Matrix, этот сайт с уведомлениями в MAX.">
+<meta name="description" content="Проекты Павла Кириллова из Керчи: домашняя система видеонаблюдения с распознаванием людей и машин, видеостена RTSP Atom для Astra Linux, свой сервер Matrix, этот сайт с уведомлениями в MAX.">
 <meta name="theme-color" content="#12161C">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
@@ -110,6 +110,11 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);l
 .done li{padding:12px 0;border-bottom:1px solid var(--day-line);font-size:16px}
 .done li b{display:block;font-size:15px;color:var(--muted);font-weight:500}
 .stack{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.story code{font-size:.92em;background:var(--day-2);padding:1px 6px;border-radius:4px}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 0 0 1px var(--day-line),0 20px 50px -25px rgba(0,0,0,.45)}
+.shots figcaption{margin-top:10px;font-size:14px;color:var(--muted)}
 .stack li{font-size:14px;padding:4px 10px;border-radius:6px;background:var(--day-2);color:var(--ink)}
 
 /* схема прохода сигнала */
@@ -156,7 +161,7 @@ footer a{color:var(--muted-night)!important}
   .intro{padding-top:72px}
 }
 @media (max-width:560px){
-  .skill-grid{grid-template-columns:minmax(0,1fr)}
+  .skill-grid,.shots{grid-template-columns:minmax(0,1fr)}
   .case-head{grid-template-columns:minmax(0,1fr)}
   .route{flex-direction:column;align-items:flex-start}
   .route li{flex-direction:column;align-items:flex-start}
@@ -183,7 +188,7 @@ footer a{color:var(--muted-night)!important}
     </a>
     <nav class="nav" aria-label="Разделы">
       <a href="#cams">Камеры дома</a>
-      <a href="#rtspatom">rtspAtom</a>
+      <a href="#rtspatom">RTSP Atom</a>
       <a href="#matrix">Matrix</a>
       <a href="#site">Этот сайт</a>
       <a href="#skills">Что умею</a>
@@ -194,7 +199,7 @@ footer a{color:var(--muted-night)!important}
     <div>
       <div class="where"><i></i>Керчь</div>
       <h1><span>Нет белого IP.</span><span>Нет интернета.</span><span>Всё равно работает.</span></h1>
-      <p class="lead">Я Павел, системный администратор. Собираю видеонаблюдение, серверы и сайты своими руками — и люблю задачи, где стандартное решение не подходит. Здесь четыре таких истории.</p>
+      <p class="lead">Я Павел Кириллов, системный администратор. Собираю видеонаблюдение, серверы и сайты своими руками — и люблю задачи, где стандартное решение не подходит. Здесь четыре таких истории.</p>
       <div class="ctas">
         <a class="btn btn-main" href="#cams">Читать истории</a>
         <a class="btn btn-ghost" href="#contact">Написать мне</a>
@@ -264,47 +269,60 @@ footer a{color:var(--muted-night)!important}
   <!-- 2. rtspAtom -->
   <article class="wrap case" id="rtspatom" aria-labelledby="rtsp-h">
     <div class="case-head">
-      <h3 id="rtsp-h">rtspAtom: панель камер для компьютера без интернета</h3>
-      <span class="status wip"><i></i>В разработке</span>
+      <h3 id="rtsp-h">RTSP Atom: видеостена для сети без интернета</h3>
+      <span class="status"><i></i>Версия 1.1</span>
     </div>
     <div class="case-body">
       <div class="story">
-        <p class="hook">Как поставить программу, если у компьютера нет интернета вообще, а операционная система — Astra Linux Special Edition «Смоленск»?</p>
-        <p>rtspAtom — панель для управления RTSP-камерами под Astra Linux SE 1.8. Привычное «apt install» тут не работает: каждую зависимость нужно найти, скачать заранее на другой машине и собрать в пакет, который встанет без единого обращения в сеть.</p>
-        <p>Это хорошая школа: начинаешь понимать, из чего на самом деле состоит программа и что она тянет за собой.</p>
+        <p class="hook">Компьютер с Astra Linux «Смоленск», камеры в закрытой сети и ни одного байта интернета. Нужно, чтобы операторы смотрели камеры в браузере — и чтобы всё ставилось одной командой.</p>
+        <p>Привычное «apt install» тут не работает: каждую зависимость нужно найти, скачать заранее и положить в пакет. Поэтому RTSP Atom везёт с собой всё — и Node.js, и медиасервер MediaMTX. Распаковал архив, запустил <code>install.sh</code>, придумал пароль администратора — панель работает.</p>
+        <p>Камеры приходят по RTSP, RTMP, HLS, SRT или UDP, MediaMTX переупаковывает их в LL-HLS, и браузер показывает видео почти без задержки и без плагинов.</p>
+        <p>Сервер написан на чистом Node.js, без единой внешней библиотеки: HTTP, база SQLite и шифрование — из стандартной поставки. Меньше зависимостей — меньше того, что нужно тащить в закрытую сеть.</p>
       </div>
       <div class="side">
         <ul class="done">
-          <li><b>Офлайн-установка</b>Все зависимости едут вместе с программой.</li>
-          <li><b>Отечественная ОС</b>Astra Linux SE 1.8 «Смоленск».</li>
-                  </ul>
+          <li><b>Видеостена</b>От 1×1 до 4×4, сохранённые раскладки, полноэкранный режим.</li>
+          <li><b>Роли и доступ</b>Администратор, оператор, наблюдатель. Ограничения по компьютерам и IP-адресам.</li>
+          <li><b>Защита</b>Белые и чёрные списки IP, блокировка перебора паролей, журнал действий с выгрузкой в CSV.</li>
+          <li><b>Проверка перед выпуском</b>GitHub Actions собирает пакет, гоняет тесты, сквозной тест «камера → панель → видео» и пробную установку в чистой системе.</li>
+        </ul>
         <ul class="stack" aria-label="Технологии">
-          <li>Astra Linux</li><li>RTSP</li><li>офлайн-пакеты</li>
+          <li>React</li><li>TypeScript</li><li>Tailwind</li><li>Node.js</li><li>SQLite</li><li>MediaMTX</li><li>LL-HLS</li><li>Astra Linux</li><li>GitHub Actions</li>
         </ul>
       </div>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="/img/rtspatom-wall.jpg" alt="Видеостена RTSP Atom: четыре камеры в раскладке 2×2" width="1440" height="900" loading="lazy">
+        <figcaption>Видеостена 2×2 с живыми потоками</figcaption>
+      </figure>
+      <figure>
+        <img src="/img/rtspatom-dashboard.jpg" alt="Панель управления RTSP Atom: компьютеры, потоки, загрузка процессора и памяти, сетевой трафик" width="1440" height="900" loading="lazy">
+        <figcaption>Панель управления: потоки, нагрузка, трафик</figcaption>
+      </figure>
     </div>
   </article>
 
   <!-- 3. Matrix -->
   <article class="wrap case" id="matrix" aria-labelledby="matrix-h">
     <div class="case-head">
-      <h3 id="matrix-h">Свой мессенджер на Matrix</h3>
-      <span class="status"><i></i>Развёрнут</span>
+      <h3 id="matrix-h">Свой мессенджер на Matrix — целиком</h3>
+      <span class="status"><i></i>Работает</span>
     </div>
     <div class="case-body">
       <div class="story">
         <p class="hook">Переписка, которая не зависит ни от чьих блокировок и не лежит на чужих серверах.</p>
-        <p>Развернул собственный защищённый сервер Matrix — открытого протокола для обмена сообщениями. Сообщения шифруются на устройствах участников, а сам сервер стоит там, где решаю я.</p>
-        <p>Подключиться можно из любого клиента Matrix: на телефоне, компьютере или в браузере.</p>
+        <p>Matrix — открытый протокол для обмена сообщениями. Поднять голый сервер несложно, а вот собрать всё, чтобы им было удобно пользоваться каждый день, — отдельная работа. Я развернул сервер полностью, со всеми службами, а не только ядро.</p>
+        <p>А потом сделал то, до чего доходят немногие: взял открытое мобильное приложение и переделал под свой сервер. Его не нужно настраивать — установил и сразу оказался дома.</p>
       </div>
       <div class="side">
         <ul class="done">
-          <li><b>Сквозное шифрование</b>Содержимое переписки видят только участники.</li>
-          <li><b>Свой сервер</b>Данные под собственным контролем.</li>
-          <li><b>Открытый протокол</b>Клиенты для всех платформ.</li>
+          <li><b>Весь сервер</b>Все службы развёрнуты и настроены, а не только базовый сервер.</li>
+          <li><b>Своё приложение</b>Мобильный клиент, доработанный под этот сервер.</li>
+          <li><b>Данные у себя</b>Переписка хранится на собственном сервере.</li>
         </ul>
         <ul class="stack" aria-label="Технологии">
-          <li>Matrix</li><li>Linux</li><li>TLS</li>
+          <li>Matrix</li><li>Linux</li><li>TLS</li><li>мобильная сборка</li>
         </ul>
       </div>
     </div>
@@ -407,7 +425,7 @@ footer a{color:var(--muted-night)!important}
   </section>
   <footer>
     <div class="wrap">
-      <span>© 2026 Павел Андреевич. Личный некоммерческий сайт.</span>
+      <span>© 2026 Павел Андреевич Кириллов. Личный некоммерческий сайт.</span>
       <span><a href="https://github.com/atomicpel">GitHub</a> &nbsp; <a href="/privacy.html">Политика обработки персональных данных</a></span>
     </div>
   </footer>
