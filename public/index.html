@@ -3,269 +3,437 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Видеонаблюдение под ключ в Керчи — 8 989 629-69-39</title>
-<meta name="description" content="Установка видеонаблюдения в Керчи: дома, дачи, магазины, предприятия. Просмотр камер с телефона, уведомления о движении. Бесплатный выезд и расчёт.">
+<title>Видеонаблюдение и сайты в Керчи — Павел, 8 989 629-69-39</title>
+<meta name="description" content="Установка видеонаблюдения в Керчи: просмотр камер с телефона, распознавание людей и машин. Создание сайтов любой сложности. Бесплатный выезд и расчёт.">
+<meta name="theme-color" content="#12161C">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
+:root{
+  --night:#12161C; --night-2:#1B2129; --night-line:#2B323C;
+  --on-night:#E9ECEF; --muted-night:#A9B1BA;
+  --day:#EDEFEA; --day-2:#E1E4DE; --day-line:#C9CEC6;
+  --ink:#171A1F; --muted:#4F5660;
+  --car:#F29A1F; --person:#E0312B; --link-day:#9A4500;
+  --display:'Unbounded',system-ui,sans-serif; --body:'Golos Text',system-ui,sans-serif;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#101214}
-a{color:#F2A33A}a:hover{color:#FFC572}
-#lead-form input,#lead-form select,#lead-form textarea{min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid #3A3F46;background:#101214;color:#EDEAE4;font:inherit;width:100%}
+body{margin:0;background:var(--day);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:var(--link-day)}a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--car);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{margin:0}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);line-height:1.1;letter-spacing:-.01em}
+.lead{font-size:clamp(17px,1.6vw,19px);max-width:620px}
+
+/* ---------- ночь ---------- */
+.night{background:var(--night);color:var(--on-night)}
+.night a{color:var(--car)}.night a:hover{color:#FFC572}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;flex-direction:column;text-decoration:none;color:var(--on-night)!important;line-height:1.15}
+.brand b{font-family:var(--display);font-weight:700;font-size:17px}
+.brand span{font-size:13px;color:var(--muted-night)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:15px}
+.nav a{color:var(--muted-night);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
+.nav a:hover{color:var(--on-night)}
+.tel{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--night-line);border-radius:10px;font-weight:600;text-decoration:none;color:var(--on-night)!important;white-space:nowrap}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;align-items:center;padding-top:56px;padding-bottom:88px}
+.where{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--muted-night);margin-bottom:22px}
+.where i{width:8px;height:8px;border-radius:50%;background:var(--car)}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,8vw,56px);line-height:1.04;letter-spacing:-.02em}
+.hero h1 span{display:block}
+.hero p{color:#C7CDD3;margin:24px 0 32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:12px;font-weight:600;text-decoration:none;font-size:17px;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease,background-color .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-main{background:var(--car);color:#1A1205!important}
+.btn-main:hover{background:#FFB040}
+.btn-ghost{border:1px solid var(--night-line);color:var(--on-night)!important}
+.btn-ghost:hover{border-color:var(--muted-night)}
+
+/* монитор */
+.monitor{margin:0}
+.screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0A0D11;box-shadow:0 0 0 1px var(--night-line),0 30px 80px -30px rgba(0,0,0,.8)}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:feed 16s infinite}
+.screen img:nth-of-type(1){animation-delay:0s}
+.screen img:nth-of-type(2){animation-delay:4s}
+.screen img:nth-of-type(3){animation-delay:8s}
+.screen img:nth-of-type(4){animation-delay:12s}
+@keyframes feed{0%{opacity:0}3%{opacity:1}25%{opacity:1}28%{opacity:0}100%{opacity:0}}
+.scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
+.scan::after{content:"";position:absolute;left:0;right:0;height:18%;top:-20%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.06),transparent);animation:sweep 5s linear infinite}
+@keyframes sweep{to{top:110%}}
+.vf{position:absolute;inset:12px;pointer-events:none}
+.vf b{position:absolute;width:26px;height:26px;border:2px solid rgba(255,255,255,.75)}
+.vf b:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}
+.vf b:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}
+.vf b:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}
+.vf b:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+.rec{position:absolute;right:20px;top:18px;display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#fff;text-shadow:0 1px 2px #000}
+.rec i{width:10px;height:10px;border-radius:50%;background:var(--person);animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.monitor figcaption{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--muted-night)}
+.key{display:inline-flex;align-items:center;gap:8px}
+.key i{width:14px;height:10px;border:2px solid}
+.key.p i{border-color:var(--person)}.key.c i{border-color:var(--car)}
+
+/* загрузка: монитор включается, строки заголовка поднимаются */
+.js .hero h1 span,.js .hero .where,.js .hero p,.js .hero .ctas{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.js .hero .where{animation-delay:.05s}
+.js .hero h1 span:nth-child(1){animation-delay:.12s}
+.js .hero h1 span:nth-child(2){animation-delay:.24s}
+.js .hero p{animation-delay:.4s}
+.js .hero .ctas{animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:none}}
+.js .screen{animation:poweron .9s .35s both}
+@keyframes poweron{0%{clip-path:inset(49.5% 0 49.5% 0);filter:brightness(3)}45%{clip-path:inset(49.5% 0 49.5% 0);filter:brightness(3)}70%{clip-path:inset(0 0 0 0);filter:brightness(1.6)}100%{clip-path:inset(0 0 0 0);filter:none}}
+
+/* ---------- день ---------- */
+.day-intro{padding-top:96px;padding-bottom:24px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px 64px;align-items:start}
+.split .lead{color:var(--muted);margin-top:16px}
+.section{padding-top:72px;padding-bottom:72px}
+.section + .section{border-top:1px solid var(--day-line)}
+
+.day-intro .split{grid-template-columns:minmax(0,1fr);gap:36px}
+.feat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
+.feat li{padding:22px 0;border-top:1px solid var(--day-line);display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto 1fr;align-content:start;gap:4px 16px}
+.feat svg{grid-row:span 2;margin-top:2px}
+.feat h3{font-size:19px;font-weight:600}
+.feat p{margin:0;color:var(--muted)}
+.note{margin-top:28px;padding:18px 20px;border-radius:12px;background:var(--day-2);color:var(--muted);font-size:16px}
+.note b{color:var(--ink)}
+
+/* прайс */
+.price{list-style:none;margin:32px 0 0;padding:0}
+.price li{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding:20px 18px;margin:0 -18px;border-radius:6px}
+.price li + li{border-top:1px solid var(--day-line)}
+.price h3{font-size:19px;font-weight:600}
+.price p{grid-column:1;margin:0;color:var(--muted);font-size:16px;max-width:620px}
+.price .sum{grid-row:1/span 2;grid-column:2;align-self:center;font-family:var(--display);font-weight:500;font-size:clamp(18px,2.2vw,24px);white-space:nowrap;font-variant-numeric:tabular-nums}
+.price .sum small{font-family:var(--body);font-size:15px;font-weight:400;color:var(--muted)}
+/* рамка распознавания при наведении */
+.price li::before{content:"";position:absolute;inset:4px;border:2px solid var(--car);border-radius:4px;opacity:0;clip-path:inset(0 100% 100% 0);transition:clip-path .35s ease,opacity .2s}
+.price li:hover::before{opacity:1;clip-path:inset(0 0 0 0)}
+.price li::after{content:attr(data-tag);position:absolute;left:4px;top:-18px;background:var(--car);color:#1A1205;font-size:12px;font-weight:600;padding:1px 7px;border-radius:3px 3px 0 0;opacity:0;transition:opacity .2s .15s}
+.price li:hover::after{opacity:1}
+.terms{margin:20px 0 0;color:var(--muted);font-size:15px}
+
+.proof{display:flex;gap:16px;align-items:center;margin-top:28px;padding:18px 20px;border-radius:12px;border:1px dashed var(--day-line);font-size:16px;color:var(--muted)}
+.proof svg{flex:none}
+
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:s}
+.steps li{counter-increment:s;padding-top:18px;border-top:2px solid var(--ink)}
+.steps li::before{content:counter(s);display:block;font-family:var(--display);font-weight:700;font-size:28px;margin-bottom:8px}
+.steps h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.steps p{margin:0;color:var(--muted);font-size:16px}
+
+.faq{max-width:820px;margin-top:28px;border-top:1px solid var(--day-line)}
+.faq details{border-bottom:1px solid var(--day-line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-size:18px;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;border-right:2px solid;border-bottom:2px solid;transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg) translateX(-3px)}
+.faq details p{margin:0 0 20px;color:var(--muted);max-width:680px}
+.faq details[open] p{animation:open .25s ease}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}}
+
+/* ---------- снова ночь: заявка ---------- */
+.contact{padding-top:88px;padding-bottom:88px}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.contact p{color:#C7CDD3}
+.bigtel{display:inline-block;margin-top:18px;font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,36px);text-decoration:none;color:var(--on-night)!important}
+#lead-form{background:var(--night-2);border:1px solid var(--night-line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;color:var(--muted-night)}
+#lead-form input,#lead-form select,#lead-form textarea{min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--night-line);background:var(--night);color:var(--on-night);font:inherit;width:100%}
 #lead-form textarea{resize:vertical}
-#lead-form input:focus,#lead-form select:focus,#lead-form textarea:focus{outline:2px solid #F2A33A;outline-offset:1px}
+#lead-form input:focus,#lead-form select:focus,#lead-form textarea:focus{outline:2px solid var(--car);outline-offset:1px}
 #lead-form button:disabled{opacity:.6;cursor:wait}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.shot{margin:0;position:relative;border-radius:10px;overflow:hidden;background:#24282E;aspect-ratio:16/9}
-.shot img{display:block;width:100%;height:100%;object-fit:cover}
-.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 8px;font-size:12px;color:#EDEAE4;background:linear-gradient(transparent,rgba(16,18,20,.85))}
-.agree{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#C9C5BD}
-#lead-form .agree input{padding:0;border:0;width:22px;height:22px;min-height:0;margin:2px 0 0;flex:none;accent-color:#F2A33A}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted-night)}
+#lead-form .agree input{padding:0;border:0;width:22px;height:22px;min-height:0;margin:2px 0 0;flex:none;accent-color:var(--car)}
+#f-status{margin:0;font-size:15px;min-height:1px}
 .ok{color:#9FD39A}.err{color:#FF9D8A}
+footer{border-top:1px solid var(--night-line);padding:24px 0;font-size:14px;color:var(--muted-night)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a{color:var(--muted-night)!important}
+
+@media (min-width:901px){.hero h1{font-size:clamp(34px,3.9vw,56px)}}
+@media (max-width:900px){
+  .hero,.split,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .hero{gap:40px;padding-top:32px;padding-bottom:64px}
+  .feat{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .day-intro{padding-top:72px}
+}
+@media (max-width:560px){
+  .steps,.feat{grid-template-columns:minmax(0,1fr)}
+  .price li{grid-template-columns:minmax(0,1fr);margin:0 -10px;padding:18px 10px}
+  .price .sum{grid-row:auto;grid-column:1;margin-top:6px}
+  .nav{order:3;width:100%}
+  #lead-form{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .screen img{opacity:0}.screen img:first-of-type{opacity:1}
+  .js .hero h1 span,.js .hero .where,.js .hero p,.js .hero .ctas{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<div style="width: 100%; min-height: 100vh; background: #101214; color: #EDEAE4; font-family: 'Golos Text', system-ui, sans-serif; font-size: 17px; line-height: 1.55">
 
-<header style="border-bottom: 1px solid #2A2E34">
-<div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #EDEAE4; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 18px">
-<span style="width: 12px; height: 12px; border-radius: 50%; background: #F2A33A"></span>
-<span>[НАЗВАНИЕ]</span>
-</a>
-<nav aria-label="Разделы" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px">
-<a href="#services" style="color: #C9C5BD; text-decoration: none">Услуги</a>
-<a href="#steps" style="color: #C9C5BD; text-decoration: none">Как работаем</a>
-<a href="#prices" style="color: #C9C5BD; text-decoration: none">Цены</a>
-<a href="#faq" style="color: #C9C5BD; text-decoration: none">Вопросы</a>
-</nav>
-<a href="tel:+79896296939" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #3A3F46; border-radius: 10px; color: #EDEAE4; text-decoration: none; font-weight: 600">8 989 629-69-39</a>
-</div>
-</header>
+<div class="night">
+  <header class="wrap top">
+    <a class="brand" href="#top" id="top">
+      <b>Павел Андреевич</b>
+      <span>камеры и сайты в Керчи</span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#cctv">Видеонаблюдение</a>
+      <a href="#sites">Сайты</a>
+      <a href="#how">Как работаю</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="tel" href="tel:+79896296939">8 989 629-69-39</a>
+  </header>
 
-<section id="top" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 56px; align-items: center">
-<div style="display: flex; flex-direction: column; gap: 24px">
-<div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #1C1F24; font-size: 14px; color: #C9C5BD">
-<span style="width: 8px; height: 8px; border-radius: 50%; background: #F2A33A"></span>
-<span>Керчь и окрестности</span>
+  <section class="wrap hero">
+    <div>
+      <div class="where"><i></i>Керчь и окрестности</div>
+      <h1><span>Ставлю камеры.</span><span>Делаю сайты.</span></h1>
+      <p class="lead">Видеонаблюдение, которое само замечает людей и машины и показывает картинку на телефоне. И сайты любой сложности — от визитки до личного кабинета.</p>
+      <div class="ctas">
+        <a class="btn btn-main" href="#contact">Оставить заявку</a>
+        <a class="btn btn-ghost" href="#cctv-prices">Посмотреть цены</a>
+      </div>
+    </div>
+    <figure class="monitor">
+      <div class="screen">
+        <img src="/img/day-person.jpg" alt="Камера у ворот днём: система выделила человека красной рамкой" width="640" height="360">
+        <img src="/img/night.jpg" alt="Та же камера ночью в инфракрасном режиме, человек выделен рамкой" width="640" height="360">
+        <img src="/img/person-car.jpg" alt="Система выделила человека красной рамкой и автомобиль оранжевой" width="640" height="360">
+        <img src="/img/car.jpg" alt="Система выделила автомобиль у ворот оранжевой рамкой" width="640" height="360">
+        <div class="scan" aria-hidden="true"></div>
+        <div class="vf" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+        <div class="rec" aria-hidden="true"><i></i>REC</div>
+      </div>
+      <figcaption>
+        <span>Кадры с моей рабочей системы</span>
+        <span class="key p"><i></i>человек</span>
+        <span class="key c"><i></i>машина</span>
+      </figcaption>
+    </figure>
+  </section>
 </div>
-<h1 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(22px, 6.6vw, 58px); line-height: 1.1; letter-spacing: -0.01em; overflow-wrap: break-word">Видеонаблюдение под ключ. Смотрите камеры с телефона из любой точки.</h1>
-<p style="margin: 0; font-size: 19px; color: #C9C5BD; max-width: 560px">Подберу камеры, смонтирую, настрою запись и удалённый доступ. Работаю с домами, дачами, магазинами и небольшими предприятиями. Для самозанятых, ИП и организаций настраиваю уведомления о движении в MAX.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 12px; background: #F2A33A; color: #101214; font-weight: 600; text-decoration: none">Бесплатный выезд и расчёт</a>
-<a href="#prices" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 12px; border: 1px solid #3A3F46; color: #EDEAE4; font-weight: 600; text-decoration: none">Посмотреть цены</a>
-</div>
-</div>
-<div style="background: #1A1D21; border: 1px solid #2A2E34; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #A7A39B; padding: 4px 6px">
-<span>Реальные кадры с моей системы</span>
-<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #F2A33A"></span>Запись идёт</span>
-</div>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
-<figure class="shot"><img src="/img/day-person.jpg" alt="Камера у ворот днём: человек выделен рамкой" loading="lazy" width="640" height="360"><figcaption>Человек у ворот</figcaption></figure>
-<figure class="shot"><img src="/img/night.jpg" alt="Та же камера ночью в ИК-режиме, человек выделен рамкой" loading="lazy" width="640" height="360"><figcaption>Ночью, ИК-подсветка</figcaption></figure>
-<figure class="shot"><img src="/img/person-car.jpg" alt="Распознаны человек и автомобиль у ворот" loading="lazy" width="640" height="360"><figcaption>Человек и машина</figcaption></figure>
-<figure class="shot"><img src="/img/car.jpg" alt="Распознан автомобиль у ворот" loading="lazy" width="640" height="360"><figcaption>Машина у ворот</figcaption></figure>
-</div>
-<div style="display: flex; gap: 10px; align-items: center; padding: 12px; border-radius: 10px; background: #101214; font-size: 14px">
-<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
-<span>Человек у ворот, 17:57. Снимок отправлен в MAX.</span>
-</div>
-</div>
-</section>
 
-<section id="services" style="background: #15181B; border-top: 1px solid #22262B; border-bottom: 1px solid #22262B">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 40px">
-<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px)">Что я делаю</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px">
-<div style="background: #1A1D21; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"></path><path d="M9 21V12h6v9"></path></svg>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Дом и дача</h3>
-<p style="margin: 0; color: #C9C5BD">Камеры по периметру, запись на локальный сервер, просмотр с телефона.</p>
-</div>
-<div style="background: #1A1D21; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18l-1.5 5h-15z"></path><path d="M5 12v8h14v-8"></path><path d="M10 20v-5h4v5"></path></svg>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Магазины и сервисы</h3>
-<p style="margin: 0; color: #C9C5BD">Касса, зал, склад и вход. Архив, к которому легко вернуться при спорной ситуации.</p>
-</div>
-<div style="background: #1A1D21; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></svg>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Удалённый доступ</h3>
-<p style="margin: 0; color: #C9C5BD">Безопасный просмотр камер через интернет без белого IP и сложных настроек.</p>
-</div>
-<div style="background: #1A1D21; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"></path><path d="M9 12l2 2 4-4"></path></svg>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Для организаций</h3>
-<p style="margin: 0; color: #C9C5BD">Системы на отечественных ОС, включая Astra Linux. Работа в закрытых сетях без интернета.</p>
-</div>
-<div style="background: #1A1D21; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="6" rx="1.5"></rect><path d="M6 17h.01"></path><path d="M10 17h.01"></path><path d="M14 17h.01"></path><path d="M12 14V9"></path><rect x="8" y="3" width="8" height="6" rx="1"></rect></svg>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Запись на ваш компьютер</h3>
-<p style="margin: 0; color: #C9C5BD">Можно обойтись без отдельного регистратора: система работает на вашем домашнем компьютере. Понадобится только специальный коммутатор для камер.</p>
-</div>
-</div>
-</div>
-</section>
+<main>
+  <section class="wrap day-intro" id="cctv">
+    <div class="split">
+      <div>
+        <h2>Видеонаблюдение под ключ</h2>
+        <p class="lead">Подберу камеры, проложу кабель, настрою запись и доступ с телефона. Работаю с домами, дачами, магазинами и предприятиями.</p>
+      </div>
+      <ul class="feat">
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21V12h6v9"/></svg>
+          <h3>Дом и дача</h3>
+          <p>Камеры по периметру, ворота, двор. Ночная съёмка в ИК-режиме.</p>
+        </li>
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18l-1.5 5h-15z"/><path d="M5 12v8h14v-8"/><path d="M10 20v-5h4v5"/></svg>
+          <h3>Магазины и сервисы</h3>
+          <p>Касса, зал, склад, вход. Архив, к которому легко вернуться в спорной ситуации.</p>
+        </li>
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+          <h3>Камеры в телефоне</h3>
+          <p>Смотрите из любой точки без белого IP и сложных настроек.</p>
+        </li>
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
+          <h3>Запись на ваш компьютер</h3>
+          <p>Без отдельного регистратора: нужен только коммутатор для камер.</p>
+        </li>
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M9 4v16"/><path d="M4 10h5"/></svg>
+          <h3>Распознавание</h3>
+          <p>Система отличает людей и машины от веток и кошек и не дёргает зря.</p>
+        </li>
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+          <h3>Для организаций</h3>
+          <p>Системы на Astra Linux и других отечественных ОС, работа в закрытых сетях.</p>
+        </li>
+      </ul>
+    </div>
+    <p class="note"><b>Уведомления в MAX</b> со снимком события настраиваю для самозанятых, ИП и организаций: по правилам MAX ботов создают только они.</p>
+  </section>
 
-<section id="steps" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 40px">
-<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px)">Как мы работаем</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #F2A33A; padding-top: 20px">
-<span style="font-family: 'Unbounded', sans-serif; font-size: 15px; color: #F2A33A">01</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Заявка</h3>
-<p style="margin: 0; color: #C9C5BD">Вы пишете или звоните, я задаю пару вопросов об объекте.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #3A3F46; padding-top: 20px">
-<span style="font-family: 'Unbounded', sans-serif; font-size: 15px; color: #A7A39B">02</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Выезд и смета</h3>
-<p style="margin: 0; color: #C9C5BD">Осматриваю объект, предлагаю схему камер и точную цену.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #3A3F46; padding-top: 20px">
-<span style="font-family: 'Unbounded', sans-serif; font-size: 15px; color: #A7A39B">03</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Монтаж</h3>
-<p style="margin: 0; color: #C9C5BD">Прокладываю кабель, ставлю камеры и сервер, настраиваю запись.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #3A3F46; padding-top: 20px">
-<span style="font-family: 'Unbounded', sans-serif; font-size: 15px; color: #A7A39B">04</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Сдача и поддержка</h3>
-<p style="margin: 0; color: #C9C5BD">Показываю, как пользоваться. Дальше на связи, если что-то понадобится.</p>
-</div>
-</div>
-</section>
+  <section class="wrap section" id="cctv-prices" aria-labelledby="cctv-prices-h">
+    <h2 id="cctv-prices-h">Цены на видеонаблюдение</h2>
+    <ul class="price">
+      <li data-tag="камера">
+        <h3>Установка одной камеры</h3>
+        <p>Монтаж, кабель до 10 м, подключение и настройка.</p>
+        <div class="sum">от 2 500 ₽</div>
+      </li>
+      <li data-tag="2 камеры">
+        <h3>Старт</h3>
+        <p>Две камеры, запись, просмотр с телефона.</p>
+        <div class="sum">от 6 000 ₽</div>
+      </li>
+      <li data-tag="4 камеры">
+        <h3>Дом целиком</h3>
+        <p>Четыре камеры, доступ из любой точки, распознавание людей и машин.</p>
+        <div class="sum">от 12 000 ₽</div>
+      </li>
+      <li data-tag="8+ камер">
+        <h3>Бизнес</h3>
+        <p>От восьми камер, большой архив, доступ для сотрудников.</p>
+        <div class="sum">от 25 000 ₽</div>
+      </li>
+      <li data-tag="ПК">
+        <h3>Запись на ваш компьютер</h3>
+        <p>Установка и настройка программы вместо регистратора.</p>
+        <div class="sum">от 3 000 ₽</div>
+      </li>
+      <li data-tag="поддержка">
+        <h3>Обслуживание</h3>
+        <p>Удалённая помощь, проверка записи, обновления.</p>
+        <div class="sum">от 1 000 ₽ <small>в месяц</small></div>
+      </li>
+    </ul>
+    <p class="terms">Цены за работу. Оборудование — по смете: подберу под бюджет или поставлю ваше. Выезд и расчёт бесплатно. Срок хранения записи зависит от диска и числа камер.</p>
+  </section>
 
-<section id="prices" style="background: #15181B; border-top: 1px solid #22262B; border-bottom: 1px solid #22262B">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 10px">
-<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px)">Пакеты</h2>
-<p style="margin: 0; color: #C9C5BD">Цена включает оборудование, монтаж и настройку. Точная сумма после выезда. Можно сэкономить на регистраторе и записывать на ваш домашний компьютер.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; align-items: stretch">
-<div style="background: #1A1D21; border: 1px solid #2A2E34; border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-<h3 style="margin: 0; font-size: 22px; font-weight: 600">Старт</h3>
-<div style="font-family: 'Unbounded', sans-serif; font-size: 30px; font-weight: 700">от [ЦЕНА] ₽</div>
-<ul style="margin: 0; padding-left: 20px; color: #C9C5BD; display: flex; flex-direction: column; gap: 8px">
-<li>2 камеры</li>
-<li>Срок хранения зависит от оборудования</li>
-<li>Просмотр с телефона</li>
-</ul>
-<a href="#contact" style="margin-top: auto; display: inline-flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 12px; border: 1px solid #3A3F46; color: #EDEAE4; text-decoration: none; font-weight: 600">Выбрать</a>
-</div>
-<div style="background: #1A1D21; border: 2px solid #F2A33A; border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
-<h3 style="margin: 0; font-size: 22px; font-weight: 600">Оптимальный</h3>
-<span style="font-size: 13px; padding: 4px 10px; border-radius: 999px; background: #F2A33A; color: #101214; font-weight: 600">Чаще выбирают</span>
-</div>
-<div style="font-family: 'Unbounded', sans-serif; font-size: 30px; font-weight: 700">от [ЦЕНА] ₽</div>
-<ul style="margin: 0; padding-left: 20px; color: #C9C5BD; display: flex; flex-direction: column; gap: 8px">
-<li>4 камеры</li>
-<li>Срок хранения зависит от оборудования</li>
-<li>Удалённый доступ из любой точки</li>
-<li>Уведомления в MAX для самозанятых, ИП и организаций</li>
-</ul>
-<a href="#contact" style="margin-top: auto; display: inline-flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 12px; background: #F2A33A; color: #101214; text-decoration: none; font-weight: 600">Выбрать</a>
-</div>
-<div style="background: #1A1D21; border: 1px solid #2A2E34; border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-<h3 style="margin: 0; font-size: 22px; font-weight: 600">Бизнес</h3>
-<div style="font-family: 'Unbounded', sans-serif; font-size: 30px; font-weight: 700">от [ЦЕНА] ₽</div>
-<ul style="margin: 0; padding-left: 20px; color: #C9C5BD; display: flex; flex-direction: column; gap: 8px">
-<li>От 8 камер</li>
-<li>Сервер с большим архивом</li>
-<li>Доступ для нескольких сотрудников</li>
-<li>Обслуживание по договору</li>
-</ul>
-<a href="#contact" style="margin-top: auto; display: inline-flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 12px; border: 1px solid #3A3F46; color: #EDEAE4; text-decoration: none; font-weight: 600">Выбрать</a>
-</div>
-</div>
-<p style="margin: 0; font-size: 15px; color: #A7A39B">Обслуживание и удалённая поддержка: [ЦЕНА] ₽ в месяц.</p>
-</div>
-</section>
+  <section class="wrap section" id="sites" aria-labelledby="sites-h">
+    <div class="split">
+      <div>
+        <h2 id="sites-h">Сайты любой сложности</h2>
+        <p class="lead">Делаю сайты, которые работают на бизнес: быстро грузятся, нормально выглядят на телефоне и присылают заявки прямо в мессенджер.</p>
+      </div>
+      <div>
+        <ul class="price" style="margin-top:0">
+          <li data-tag="визитка">
+            <h3>Сайт-визитка</h3>
+            <p>Одна-три страницы: кто вы, что делаете, как связаться.</p>
+            <div class="sum">от 10 000 ₽</div>
+          </li>
+          <li data-tag="лендинг">
+            <h3>Лендинг</h3>
+            <p>Продающая страница под одну услугу, с формой заявки.</p>
+            <div class="sum">от 15 000 ₽</div>
+          </li>
+          <li data-tag="компания">
+            <h3>Сайт компании</h3>
+            <p>Несколько разделов, услуги, новости, контакты.</p>
+            <div class="sum">от 50 000 ₽</div>
+          </li>
+          <li data-tag="магазин">
+            <h3>Интернет-магазин</h3>
+            <p>Каталог, корзина, приём заказов и оплаты.</p>
+            <div class="sum">от 70 000 ₽</div>
+          </li>
+          <li data-tag="сервис">
+            <h3>Веб-сервис</h3>
+            <p>Личные кабинеты, панели управления, интеграции, боты.</p>
+            <div class="sum">от 100 000 ₽</div>
+          </li>
+        </ul>
+        <div class="proof">
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9A4500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span>Этот сайт тоже сделал я. Заявка из формы ниже приходит мне в MAX за секунду.</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="faq" style="max-width: 900px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
-<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px)">Частые вопросы</h2>
-<div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid #2A2E34">
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Нужен ли интернет на объекте?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Для записи нет, всё хранится на месте. Для просмотра с телефона нужен любой интернет, белый IP не требуется.</p>
-</details>
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Есть ли абонентская плата?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Нет, система ваша. Поддержку можно подключить по желанию.</p>
-</details>
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Можно ли использовать мои старые камеры?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Чаще всего да, если они поддерживают RTSP. Проверю на выезде.</p>
-</details>
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Сколько хранится запись?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Зависит от оборудования: объёма диска и количества камер. Подберу вариант под нужный вам срок.</p>
-</details>
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Обязательно покупать видеорегистратор?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Нет. Систему можно запустить на вашем домашнем компьютере, если докупить специальный коммутатор для камер.</p>
-</details>
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Можно получать уведомления в MAX?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Да, если вы самозанятый, ИП или организация: по правилам MAX ботов создают только они. Для остальных доступен просмотр камер с телефона.</p>
-</details>
-<details style="border-bottom: 1px solid #2A2E34; padding: 20px 0">
-<summary style="cursor: pointer; font-size: 18px; font-weight: 600; min-height: 28px">Сколько занимает установка?</summary>
-<p style="margin: 12px 0 0; color: #C9C5BD">Дом или небольшой магазин обычно за один день.</p>
-</details>
-</div>
-</section>
+  <section class="wrap section" id="how" aria-labelledby="how-h">
+    <h2 id="how-h">Как работаю</h2>
+    <ol class="steps">
+      <li><h3>Заявка</h3><p>Пишете или звоните, задаю пару вопросов о задаче.</p></li>
+      <li><h3>Расчёт</h3><p>Выезжаю на объект или созваниваемся, называю точную цену.</p></li>
+      <li><h3>Работа</h3><p>Монтирую систему или делаю сайт, показываю промежуточный результат.</p></li>
+      <li><h3>Сдача</h3><p>Показываю, как пользоваться, и остаюсь на связи.</p></li>
+    </ol>
+  </section>
 
-<section id="contact" style="background: #15181B; border-top: 1px solid #22262B">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 18px">
-<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px)">Оставьте заявку</h2>
-<p style="margin: 0; color: #C9C5BD">Перезвоню в течение часа, договоримся о выезде. Осмотр и расчёт бесплатно.</p>
-<div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px">
-<a href="tel:+79896296939" style="color: #EDEAE4; text-decoration: none; font-weight: 600">8 989 629-69-39</a>
-<span style="font-size: 15px; color: #A7A39B">Звонки и MAX по этому же номеру</span>
-</div>
-</div>
-<form id="lead-form" novalidate style="background: #1A1D21; border: 1px solid #2A2E34; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<div class="hp" aria-hidden="true"><label for="f-site">Не заполняйте</label><input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<label for="f-name" style="font-size: 14px; color: #C9C5BD">Имя</label>
-<input id="f-name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться" required>
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<label for="f-phone" style="font-size: 14px; color: #C9C5BD">Телефон</label>
-<input id="f-phone" name="phone" type="tel" maxlength="20" autocomplete="tel" placeholder="+7" required>
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<label for="f-obj" style="font-size: 14px; color: #C9C5BD">Объект</label>
-<select id="f-obj" name="object">
-<option>Дом или дача</option>
-<option>Квартира</option>
-<option>Магазин или офис</option>
-<option>Склад или производство</option>
-</select>
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<label for="f-comment" style="font-size: 14px; color: #C9C5BD">Комментарий (необязательно)</label>
-<textarea id="f-comment" name="comment" maxlength="1000" rows="3" placeholder="Сколько камер, адрес, удобное время"></textarea>
-</div>
-<div class="agree">
-<input id="f-consent" name="consent" type="checkbox" required>
-<label for="f-consent">Даю <a href="/consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="/privacy.html" target="_blank">политикой</a></label>
-</div>
-<button id="f-submit" type="submit" style="min-height: 52px; border: 0; border-radius: 12px; background: #F2A33A; color: #101214; font: inherit; font-weight: 600; cursor: pointer">Отправить заявку</button>
-<p id="f-status" role="status" aria-live="polite" style="margin: 0; font-size: 15px; min-height: 1px"></p>
+  <section class="wrap section" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">Вопросы</h2>
+    <div class="faq">
+      <details><summary>Нужен ли интернет на объекте?</summary><p>Для записи нет, всё хранится на месте. Для просмотра с телефона нужен любой интернет, белый IP не требуется.</p></details>
+      <details><summary>Сколько хранится запись?</summary><p>Зависит от объёма диска и количества камер. Подберу вариант под нужный срок.</p></details>
+      <details><summary>Обязательно покупать регистратор?</summary><p>Нет. Систему можно запустить на вашем компьютере, если докупить коммутатор для камер.</p></details>
+      <details><summary>Можно поставить мои старые камеры?</summary><p>Чаще всего да, если они поддерживают RTSP. Проверю на выезде.</p></details>
+      <details><summary>Сколько делается сайт?</summary><p>Визитка и лендинг — от нескольких дней, сайт компании — от двух недель, магазин и сервис — по договорённости после обсуждения задачи.</p></details>
+      <details><summary>Кто будет размещать сайт и домен?</summary><p>Помогу купить домен и хостинг на ваше имя, всё настрою. Сайт и доступы остаются у вас.</p></details>
+    </div>
+  </section>
+</main>
 
-</form>
+<div class="night">
+  <section class="wrap contact" id="contact" aria-labelledby="contact-h">
+    <div class="contact-grid">
+      <div>
+        <h2 id="contact-h">Оставьте заявку</h2>
+        <p class="lead">Перезвоню в течение часа. Осмотр объекта и расчёт бесплатно.</p>
+        <a class="bigtel" href="tel:+79896296939">8 989 629-69-39</a>
+        <p style="font-size:15px;color:var(--muted-night);margin-top:6px">Звонки и MAX по этому номеру</p>
+      </div>
+      <form id="lead-form" novalidate>
+        <div class="hp" aria-hidden="true"><label for="f-site">Не заполняйте</label><input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="field">
+          <label for="f-name">Имя</label>
+          <input id="f-name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Телефон</label>
+          <input id="f-phone" name="phone" type="tel" maxlength="20" autocomplete="tel" placeholder="+7" required>
+        </div>
+        <div class="field">
+          <label for="f-obj">Что нужно</label>
+          <select id="f-obj" name="object">
+            <optgroup label="Видеонаблюдение">
+              <option>Камеры — дом или дача</option>
+              <option>Камеры — квартира</option>
+              <option>Камеры — магазин или офис</option>
+              <option>Камеры — склад или производство</option>
+            </optgroup>
+            <optgroup label="Сайты">
+              <option>Сайт — визитка или лендинг</option>
+              <option>Сайт компании</option>
+              <option>Интернет-магазин</option>
+              <option>Веб-сервис или сложный проект</option>
+            </optgroup>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-comment">Комментарий (необязательно)</label>
+          <textarea id="f-comment" name="comment" maxlength="1000" rows="3" placeholder="Сколько камер, адрес, или что за сайт нужен"></textarea>
+        </div>
+        <div class="agree">
+          <input id="f-consent" name="consent" type="checkbox" required>
+          <label for="f-consent">Даю <a href="/consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="/privacy.html" target="_blank">политикой</a></label>
+        </div>
+        <button id="f-submit" class="btn btn-main" type="submit">Отправить заявку</button>
+        <p id="f-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Павел Андреевич, Керчь</span>
+      <a href="/privacy.html">Политика обработки персональных данных</a>
+    </div>
+  </footer>
 </div>
-</section>
 
-<footer style="border-top: 1px solid #22262B">
-<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #A7A39B">
-<span>© 2026 [НАЗВАНИЕ] · Керчь</span>
-<span>[ИП или самозанятый, ИНН] · <a href="/privacy.html" style="color: #A7A39B">Политика обработки персональных данных</a></span>
-</div>
-</footer>
-
-</div>
 <script>
 (function(){
   var f=document.getElementById('lead-form'),b=document.getElementById('f-submit'),st=document.getElementById('f-status');
@@ -277,15 +445,15 @@ a{color:#F2A33A}a:hover{color:#FFC572}
     if((d.phone||'').replace(/\D/g,'').length<10){show('Проверьте номер телефона.','err');return;}
     if(!document.getElementById('f-consent').checked){show('Отметьте согласие на обработку персональных данных.','err');return;}
     d.consent=true;
-    b.disabled=true;show('Отправляю…','');
+    b.disabled=true;b.textContent='Отправляю…';show('','');
     fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
       .then(function(x){
-        if(x.ok){f.reset();show('Спасибо! Заявка принята, скоро перезвоню.','ok');}
-        else show(x.j.error||'Не удалось отправить. Позвоните: 8 989 629-69-39.','err');
+        if(x.ok){f.reset();show('Заявка отправлена. Перезвоню в течение часа.','ok');}
+        else show(x.j.error||'Заявка не отправилась. Позвоните: 8 989 629-69-39.','err');
       })
       .catch(function(){show('Нет связи с сервером. Позвоните: 8 989 629-69-39.','err');})
-      .finally(function(){b.disabled=false;});
+      .finally(function(){b.disabled=false;b.textContent='Отправить заявку';});
   });
 })();
 </script>

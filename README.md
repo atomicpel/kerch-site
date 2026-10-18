@@ -85,5 +85,5 @@ sudo certbot --nginx -d ВАШ-ДОМЕН
 
 ## Что заменить на сайте
 
-- `public/index.html`: `[НАЗВАНИЕ]`, `[ЦЕНА]`, `[ИП или самозанятый, ИНН]`.
-- `public/privacy.html` и `public/consent.html`: `[ФИО полностью]`, статус, `[ИНН]`, `[ОГРНИП — только для ИП]` (для самозанятого строку удалить), `[почтовый адрес для обращений]`, `[EMAIL]`.
+- `public/privacy.html` и `public/consent.html`: `[Фамилия]` и `[EMAIL]` для обращений по персональным данным.
+- Цены — в `public/index.html`, блоки `#cctv-prices` и `#sites`.

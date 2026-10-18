@@ -49,7 +49,7 @@ PORT = int(os.environ.get("PORT", "8080"))
 TRUST_PROXY = os.environ.get("TRUST_PROXY", "1") == "1"
 
 RETENTION_DAYS = 365   # срок хранения заявок, как в политике
-CONSENT_VERSION = "2026-10-17"  # редакция текста согласия
+CONSENT_VERSION = "2026-10-18"  # редакция текста согласия
 
 RATE_LIMIT = 5          # заявок
 RATE_WINDOW = 600       # за 10 минут с одного IP
@@ -201,7 +201,7 @@ class Handler(SimpleHTTPRequestHandler):
             "Новая заявка с сайта\n\n"
             f"Имя: {name}\n"
             f"Телефон: {phone}\n"
-            f"Объект: {obj or '-'}\n"
+            f"Услуга: {obj or '-'}\n"
             + (f"Комментарий: {comment}\n" if comment else "")
             + f"\n{when}"
         )
