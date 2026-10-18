@@ -7,6 +7,7 @@
 ## Что в архиве
 
 - `public/index.html` — сам сайт
+- `public/net.html`, `public/net.js` — «Помощник сетевика»: IP-калькулятор, подсети, генератор VLAN, справочник портов (всё в браузере)
 - `server.py` — отдаёт сайт и принимает заявки
 - `get_user_id.py` — помогает узнать ваш user_id в MAX
 - `.env.example` — шаблон настроек
@@ -83,7 +84,7 @@ sudo certbot --nginx -d ВАШ-ДОМЕН
 - Заявки старше 365 дней удаляются автоматически (как указано в политике).
 - Шрифты подключены с самого сайта, без Google Fonts, cookie и аналитики нет.
 
-## Что заменить на сайте
+## Где что править
 
-- `public/privacy.html` и `public/consent.html`: `[Фамилия]` и `[EMAIL]` для обращений по персональным данным.
-- Тексты проектов — в `public/index.html`, блоки `#cams`, `#rtspatom`, `#matrix`, `#site`.
+- Обо мне, проекты, навыки — `public/index.html`, блоки `#about`, `#cams`, `#rtspatom`, `#matrix`, `#site`, `#skills`.
+- Инструменты — `public/net.js` (логика) и `public/net.html` (страница).

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Помощник сетевика — IP-калькулятор, подсети, VLAN, порты</title>
+<meta name="description" content="IP-калькулятор, разбивка сети на подсети, генератор настроек VLAN для Cisco, Eltex, D-Link и MikroTik, справочник портов. Считается в браузере, ничего не отправляется.">
+<meta name="theme-color" content="#12161C">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{
+  --night:#12161C; --night-2:#1B2129; --night-line:#2B323C; --on-night:#E9ECEF; --muted-night:#A9B1BA;
+  --day:#EDEFEA; --day-2:#E1E4DE; --day-line:#C9CEC6; --ink:#171A1F; --muted:#4F5660;
+  --car:#F29A1F; --person:#C42820; --link-day:#9A4500;
+  --display:'Unbounded',system-ui,sans-serif; --body:'Golos Text',system-ui,sans-serif;
+  --mono:ui-monospace,'SFMono-Regular','Cascadia Mono','DejaVu Sans Mono',Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--day);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--link-day)}a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--car);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:20px;padding-right:20px}
+h1,h2,h3{margin:0}
+.night{background:var(--night);color:var(--on-night)}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;flex-direction:column;text-decoration:none;color:var(--on-night);line-height:1.15}
+.brand b{font-family:var(--display);font-weight:700;font-size:17px}
+.brand span{font-size:13px;color:var(--muted-night)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:15px}
+.nav a{color:var(--muted-night);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
+.nav a:hover{color:var(--on-night)}
+.head{padding-top:40px;padding-bottom:64px}
+.head h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,56px);line-height:1.05;letter-spacing:-.02em}
+.head p{color:#C7CDD3;max-width:660px;margin:18px 0 0;font-size:clamp(17px,1.6vw,19px)}
+
+.tool{padding-top:64px;padding-bottom:64px}
+.tool + .tool{border-top:1px solid var(--day-line)}
+.tool-head{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:24px;max-width:720px}
+.tool h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,36px);line-height:1.1}
+.tool-head p{margin:0;color:var(--muted)}
+.pane{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px 48px;align-items:start}
+label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+input[type=text],input[type=number],input[type=search]{width:100%;min-height:48px;padding:10px 14px;border-radius:10px;border:1px solid var(--day-line);background:#fff;color:var(--ink);font:inherit}
+input:focus{outline:2px solid var(--car);outline-offset:1px}
+.big{font-size:22px;font-variant-numeric:tabular-nums;min-height:56px}
+.err{color:var(--person);font-size:15px;margin:8px 0 0;min-height:1px}
+.tries{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{min-height:36px;padding:0 12px;border-radius:8px;border:1px solid var(--day-line);background:var(--day);color:var(--ink);font:inherit;font-size:15px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--ink)}
+.res{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0;border-top:2px solid var(--ink)}
+.res dt,.res dd{padding:10px 0;border-bottom:1px solid var(--day-line);margin:0}
+.res dt{color:var(--muted);font-size:15px;padding-right:20px}
+.res dd{font-variant-numeric:tabular-nums;font-weight:500;overflow-wrap:anywhere}
+.res dd.bits{font-family:var(--mono);font-size:14px;font-weight:400}
+
+.vrows{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:8px}
+.vrow{display:grid;grid-template-columns:minmax(0,1fr) 120px 44px;gap:8px}
+.icon-btn{min-height:48px;border-radius:10px;border:1px solid var(--day-line);background:var(--day);font-size:22px;line-height:1;cursor:pointer;color:var(--muted)}
+.icon-btn:hover{color:var(--person);border-color:var(--person)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:10px;font-weight:600;font-size:16px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--ink);color:var(--day)}
+.table-box{overflow-x:auto;border-top:2px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{text-align:left;padding:10px 14px 10px 0;border-bottom:1px solid var(--day-line);white-space:nowrap;vertical-align:top}
+th{font-weight:500;color:var(--muted);font-size:14px}
+#ports td:last-child{white-space:normal;min-width:220px}
+td:first-child{font-weight:600}
+.sum{color:var(--muted);font-size:15px;margin:12px 0 0}
+
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.vgrid .wide{grid-column:1/-1}
+.more{margin-top:14px;font-size:15px}
+.more summary{cursor:pointer;color:var(--muted);min-height:32px;padding:4px 0}
+.more .vgrid{margin-top:12px}
+.hint{font-size:13px;color:var(--muted);margin-top:4px}
+.tablist{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--night-line);background:var(--night-2);border-radius:12px 12px 0 0;padding:6px 6px 0}
+.tablist button{min-height:44px;padding:0 16px;border:0;background:transparent;color:var(--muted-night);font:inherit;font-size:15px;font-weight:600;cursor:pointer;border-radius:8px 8px 0 0;position:relative}
+.tablist button[aria-selected=true]{color:var(--on-night);background:var(--night)}
+.tablist button[aria-selected=true]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;background:var(--car)}
+.code{position:relative;background:var(--night);color:#DDE3E8;border-radius:0 0 12px 12px}
+.code pre{margin:0;padding:56px 18px 22px;overflow:auto;max-height:520px;font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre}
+.copy{position:absolute;right:10px;top:10px;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid var(--night-line);background:var(--night-2);color:var(--on-night);font:inherit;font-size:14px;cursor:pointer}
+.copy:hover{border-color:var(--car)}
+.warn{margin:12px 0 0;font-size:14px;color:var(--muted)}
+
+footer{border-top:1px solid var(--night-line);padding:24px 0;font-size:14px;color:var(--muted-night)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a{color:var(--muted-night)}
+
+#vlsm .pane{grid-template-columns:minmax(0,1fr)}
+#vlsm .pane > div:first-child{max-width:620px}
+@media (max-width:900px){.pane{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){
+  .vgrid{grid-template-columns:minmax(0,1fr)}
+  .vrow{grid-template-columns:minmax(0,1fr) 92px 44px}
+  .nav{width:100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="night">
+  <header class="wrap top">
+    <a class="brand" href="/">
+      <b>Павел Андреевич</b>
+      <span>камеры, серверы, сети</span>
+    </a>
+    <nav class="nav" aria-label="Инструменты">
+      <a href="#calc">IP-калькулятор</a>
+      <a href="#vlsm">Подсети</a>
+      <a href="#vlan">VLAN</a>
+      <a href="#ports">Порты</a>
+      <a href="/">На главную</a>
+    </nav>
+  </header>
+  <section class="wrap head">
+    <h1>Помощник сетевика</h1>
+    <p>То, что я сам держу под рукой: посчитать подсеть, нарубить сеть на VLAN, получить готовые команды для коммутатора и вспомнить, какой порт открыть. Всё считается прямо в браузере и никуда не отправляется.</p>
+  </section>
+</div>
+
+<main>
+  <section class="wrap tool" id="calc" aria-labelledby="calc-h">
+    <div class="tool-head">
+      <h2 id="calc-h">IP-калькулятор</h2>
+      <p>Адрес с префиксом или маской — результат появляется сразу.</p>
+    </div>
+    <div class="pane">
+      <div>
+        <label for="calc-in">Адрес и префикс</label>
+        <input id="calc-in" class="big" type="text" value="192.168.10.37/24" autocomplete="off" spellcheck="false" inputmode="decimal">
+        <p class="err" id="calc-err" role="status" aria-live="polite"></p>
+        <div class="tries" aria-label="Примеры">
+          <button class="chip" type="button" data-try="10.0.0.1/8">10.0.0.1/8</button>
+          <button class="chip" type="button" data-try="172.16.5.130 255.255.255.192">172.16.5.130 255.255.255.192</button>
+          <button class="chip" type="button" data-try="192.168.1.1/30">/30 для линка</button>
+          <button class="chip" type="button" data-try="100.72.14.9/10">CGNAT</button>
+        </div>
+      </div>
+      <dl class="res" id="calc-out" aria-live="polite"></dl>
+    </div>
+  </section>
+
+  <section class="wrap tool" id="vlsm" aria-labelledby="vlsm-h">
+    <div class="tool-head">
+      <h2 id="vlsm-h">Разбивка сети на подсети</h2>
+      <p>Задайте общую сеть и сколько устройств нужно в каждом сегменте. Помощник подберёт размер каждой подсети и разложит их без пересечений — сначала большие, потом маленькие.</p>
+    </div>
+    <div class="pane">
+      <div>
+        <label for="vlsm-base">Общая сеть</label>
+        <input id="vlsm-base" type="text" value="192.168.0.0/22" autocomplete="off" spellcheck="false">
+        <p class="hint">Например, 10.10.0.0/16 или 192.168.0.0/22</p>
+        <p style="margin:18px 0 6px;font-size:14px;color:var(--muted)">Подсети: название и сколько нужно хостов</p>
+        <ul class="vrows" id="vlsm-rows"></ul>
+        <button class="btn" type="button" id="vlsm-add">Добавить подсеть</button>
+        <p class="err" id="vlsm-err" role="status" aria-live="polite"></p>
+      </div>
+      <div>
+        <div class="table-box" id="vlsm-out">
+          <table>
+            <thead><tr><th scope="col">Подсеть</th><th scope="col">Нужно</th><th scope="col">Сеть</th><th scope="col">Маска</th><th scope="col">Хосты</th><th scope="col">Broadcast</th><th scope="col">Влезет</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="sum" id="vlsm-sum" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap tool" id="vlan" aria-labelledby="vlan-h">
+    <div class="tool-head">
+      <h2 id="vlan-h">Генератор настроек VLAN</h2>
+      <p>Опишите VLAN один раз — получите команды для Cisco, Eltex, D-Link и MikroTik. Перед применением на рабочем оборудовании проверьте названия портов и сохраните текущую конфигурацию.</p>
+    </div>
+    <div class="pane">
+      <form id="vlan-form" novalidate>
+        <div class="vgrid">
+          <div><label for="v-id">Номер VLAN</label><input id="v-id" type="number" min="2" max="4094" value="20" inputmode="numeric"></div>
+          <div><label for="v-name">Имя</label><input id="v-name" type="text" value="CAMERAS" maxlength="32" spellcheck="false"></div>
+          <div><label for="v-access">Порты доступа (untagged)</label><input id="v-access" type="text" value="1-8" spellcheck="false"><p class="hint">Например, 1-8,10</p></div>
+          <div><label for="v-trunk">Магистраль (tagged)</label><input id="v-trunk" type="text" value="24" spellcheck="false"><p class="hint">Например, 24 или 23,24</p></div>
+          <div class="wide"><label for="v-gw">Шлюз VLAN (необязательно)</label><input id="v-gw" type="text" value="192.168.20.1/24" spellcheck="false"><p class="hint">Оставьте пустым для чистого L2</p></div>
+        </div>
+        <details class="more">
+          <summary>Названия портов на разных устройствах</summary>
+          <div class="vgrid">
+            <div><label for="v-cisco">Cisco</label><input id="v-cisco" type="text" value="GigabitEthernet1/0/" spellcheck="false"><p class="hint">На 2960: GigabitEthernet0/</p></div>
+            <div><label for="v-eltex">Eltex MES</label><input id="v-eltex" type="text" value="gigabitethernet 1/0/" spellcheck="false"><p class="hint">Для MES23xx/33xx</p></div>
+            <div><label for="v-mt">MikroTik, префикс порта</label><input id="v-mt" type="text" value="ether" spellcheck="false"></div>
+            <div><label for="v-bridge">MikroTik, мост</label><input id="v-bridge" type="text" value="bridge1" spellcheck="false"></div>
+          </div>
+        </details>
+        <p class="err" id="vlan-err" role="status" aria-live="polite"></p>
+      </form>
+      <div>
+        <div class="tablist" role="tablist" aria-label="Производитель">
+          <button role="tab" id="t-cisco" data-vendor="cisco" aria-selected="true" aria-controls="vlan-panel">Cisco IOS</button>
+          <button role="tab" id="t-eltex" data-vendor="eltex" aria-selected="false" aria-controls="vlan-panel" tabindex="-1">Eltex MES</button>
+          <button role="tab" id="t-dlink" data-vendor="dlink" aria-selected="false" aria-controls="vlan-panel" tabindex="-1">D-Link</button>
+          <button role="tab" id="t-mikrotik" data-vendor="mikrotik" aria-selected="false" aria-controls="vlan-panel" tabindex="-1">MikroTik</button>
+        </div>
+        <div class="code" id="vlan-panel" role="tabpanel" aria-labelledby="t-cisco">
+          <button class="copy" type="button" id="vlan-copy">Копировать</button>
+          <pre id="vlan-code" tabindex="0"></pre>
+        </div>
+        <p class="warn" id="vlan-note" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap tool" id="ports" aria-labelledby="ports-h">
+    <div class="tool-head">
+      <h2 id="ports-h">Справочник портов</h2>
+      <p>Что открыть на файрволе: от DNS и RDP до 1С, Winbox, камер и Matrix.</p>
+    </div>
+    <div class="pane">
+      <div>
+        <label for="ports-in">Поиск по номеру или названию</label>
+        <input id="ports-in" type="search" placeholder="Например, 1С, rdp или 554" autocomplete="off">
+        <p class="hint" id="ports-none" hidden>Ничего не нашлось. Попробуйте номер порта или название службы.</p>
+      </div>
+      <div class="table-box">
+        <table>
+          <thead><tr><th scope="col">Порт</th><th scope="col">Протокол</th><th scope="col">Служба</th></tr></thead>
+          <tbody id="ports-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="night">
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Павел Андреевич Кириллов. Личный некоммерческий сайт.</span>
+      <a href="/">На главную</a>
+    </div>
+  </footer>
+</div>
+<script src="/net.js"></script>
+</body>
+</html>

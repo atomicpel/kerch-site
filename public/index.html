@@ -132,6 +132,37 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);l
 .skill-grid h3{font-size:18px;font-weight:600;margin-bottom:6px}
 .skill-grid p{margin:0;color:var(--muted);font-size:16px}
 
+
+/* обо мне */
+.about{padding-top:96px;padding-bottom:72px}
+.about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px 64px;align-items:start}
+.about-quote{font-size:clamp(26px,3.6vw,42px);line-height:1.12}
+.about-lead{color:var(--muted);margin-top:20px}
+.creed{margin:0 0 28px;padding:0 0 0 20px;border-left:3px solid var(--car)}
+.creed p{margin:0 0 10px;font-size:18px;font-weight:500}
+.creed p + p{font-weight:400;color:var(--muted);font-size:17px}
+.facts{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);border-top:2px solid var(--ink)}
+.facts dt,.facts dd{margin:0;padding:12px 0;border-bottom:1px solid var(--day-line)}
+.facts dt{color:var(--muted);font-size:15px;padding-right:24px}
+.sub-h{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,26px);margin:64px 0 8px}
+.track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.track li{padding:18px 0;border-top:1px solid var(--day-line);display:flex;flex-direction:column;gap:4px}
+.track b{font-size:18px;font-weight:600}
+.track span{color:var(--muted)}
+.skill-grid .stack{margin-top:12px}
+/* помощник */
+.helper{padding-top:0;padding-bottom:96px}
+.helper-card{background:var(--night);color:var(--on-night);border-radius:18px;padding:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start}
+.helper-card p{color:#C7CDD3;margin:14px 0 24px}
+.helper-card label{display:block;font-size:14px;color:var(--muted-night);margin-bottom:6px}
+#mini-in{width:100%;min-height:52px;padding:10px 14px;border-radius:10px;border:1px solid var(--night-line);background:var(--night-2);color:var(--on-night);font:inherit;font-size:20px;font-variant-numeric:tabular-nums}
+#mini-in:focus{outline:2px solid var(--car);outline-offset:1px}
+.mini-err{color:#FF9D8A;font-size:15px;margin:8px 0 0;min-height:1px}
+.mini-out{margin:4px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr)}
+.mini-out dt,.mini-out dd{margin:0;padding:9px 0;border-bottom:1px solid var(--night-line)}
+.mini-out dt{color:var(--muted-night);font-size:15px;padding-right:20px}
+.mini-out dd{font-variant-numeric:tabular-nums;font-weight:500;overflow-wrap:anywhere}
+
 /* ---------- снова ночь ---------- */
 .contact{padding-top:88px;padding-bottom:88px}
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
@@ -158,10 +189,13 @@ footer a{color:var(--muted-night)!important}
   .hero,.contact-grid,.case-body{grid-template-columns:minmax(0,1fr)}
   .hero{gap:40px;padding-top:32px;padding-bottom:64px}
   .skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+  .about-grid,.helper-card{grid-template-columns:minmax(0,1fr)}
+  .about{padding-top:72px}
   .intro{padding-top:72px}
 }
 @media (max-width:560px){
-  .skill-grid,.shots{grid-template-columns:minmax(0,1fr)}
+  .skill-grid,.shots,.track{grid-template-columns:minmax(0,1fr)}
+  .helper-card{padding:24px}
   .case-head{grid-template-columns:minmax(0,1fr)}
   .route{flex-direction:column;align-items:flex-start}
   .route li{flex-direction:column;align-items:flex-start}
@@ -187,11 +221,10 @@ footer a{color:var(--muted-night)!important}
       <span>камеры, серверы, сети</span>
     </a>
     <nav class="nav" aria-label="Разделы">
-      <a href="#cams">Камеры дома</a>
-      <a href="#rtspatom">RTSP Atom</a>
-      <a href="#matrix">Matrix</a>
-      <a href="#site">Этот сайт</a>
+      <a href="#about">Обо мне</a>
+      <a href="#cams">Проекты</a>
       <a href="#skills">Что умею</a>
+      <a href="/net.html">Помощник сетевика</a>
     </nav>
   </header>
 
@@ -199,10 +232,10 @@ footer a{color:var(--muted-night)!important}
     <div>
       <div class="where"><i></i>Керчь</div>
       <h1><span>Нет белого IP.</span><span>Нет интернета.</span><span>Всё равно работает.</span></h1>
-      <p class="lead">Я Павел Кириллов, системный администратор. Собираю видеонаблюдение, серверы и сайты своими руками — и люблю задачи, где стандартное решение не подходит. Здесь четыре таких истории.</p>
+      <p class="lead">Я Павел Кириллов, системный администратор, в IT с 2008 года. Поднимаю серверы и сети, собираю видеонаблюдение и сайты своими руками — и люблю задачи, где стандартное решение не подходит.</p>
       <div class="ctas">
-        <a class="btn btn-main" href="#cams">Читать истории</a>
-        <a class="btn btn-ghost" href="#contact">Написать мне</a>
+        <a class="btn btn-main" href="#cams">Смотреть проекты</a>
+        <a class="btn btn-ghost" href="/net.html">Помощник сетевика</a>
       </div>
     </div>
     <figure class="monitor">
@@ -225,6 +258,34 @@ footer a{color:var(--muted-night)!important}
 </div>
 
 <main>
+  <section class="wrap about" id="about" aria-labelledby="about-h">
+    <div class="about-grid">
+      <div>
+        <h2 id="about-h" class="about-quote">В IT с 2008-го. Начинал, когда серверы были железные и гудели нещадно.</h2>
+        <p class="lead about-lead">Сейчас могу поднять и поддерживать практически любую инфраструктуру — от сети с нуля до своего мессенджера.</p>
+      </div>
+      <div class="about-side">
+        <blockquote class="creed">
+          <p>Не люблю костыли и временные решения. Если делать — то чтобы работало стабильно и не требовало постоянного внимания.</p>
+          <p>Новое изучаю, но к моде отношусь скептически: проверенное надёжнее.</p>
+        </blockquote>
+        <dl class="facts">
+          <dt>Стаж</dt><dd>16 лет</dd>
+          <dt>Образование</dt><dd>Высшее, инженер вычислительных машин, комплексов, систем и сетей</dd>
+          <dt>Город</dt><dd>Керчь</dd>
+        </dl>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Где пригодился</h3>
+    <ul class="track">
+      <li><b>Строил сети с нуля</b><span>От воткнутого в розетку роутера до разделённых подсетей и нормального файрвола на входе.</span></li>
+      <li><b>Переносил сайты и сервисы на своё железо</b><span>Настраивал IIS, разбирался с правами WordPress — чтобы работало и не взламывалось.</span></li>
+      <li><b>Внедрял защищённый мессенджер</b><span>Matrix вместо WhatsApp для внутренней переписки: свой сервер, свои правила.</span></li>
+      <li><b>Поддержка без нервов</b><span>«Упало», «не печатает», «ой, я всё удалила» — решаю быстро и спокойно.</span></li>
+    </ul>
+  </section>
+
   <section class="wrap intro" aria-labelledby="projects-h">
     <h2 id="projects-h">Проекты</h2>
     <p class="lead">Всё сделано в свободное время — для себя и чтобы разобраться, как это устроено.</p>
@@ -306,23 +367,23 @@ footer a{color:var(--muted-night)!important}
   <!-- 3. Matrix -->
   <article class="wrap case" id="matrix" aria-labelledby="matrix-h">
     <div class="case-head">
-      <h3 id="matrix-h">Свой мессенджер на Matrix — целиком</h3>
+      <h3 id="matrix-h">Свой мессенджер на Matrix: Synapse и Element</h3>
       <span class="status"><i></i>Работает</span>
     </div>
     <div class="case-body">
       <div class="story">
         <p class="hook">Переписка, которая не зависит ни от чьих блокировок и не лежит на чужих серверах.</p>
-        <p>Matrix — открытый протокол для обмена сообщениями. Поднять голый сервер несложно, а вот собрать всё, чтобы им было удобно пользоваться каждый день, — отдельная работа. Я развернул сервер полностью, со всеми службами, а не только ядро.</p>
-        <p>А потом сделал то, до чего доходят немногие: взял открытое мобильное приложение и переделал под свой сервер. Его не нужно настраивать — установил и сразу оказался дома.</p>
+        <p>Matrix — открытый протокол для обмена сообщениями. Поднять голый сервер несложно, а вот собрать всё, чтобы им было удобно пользоваться каждый день, — отдельная работа. Я развернул сервер Synapse полностью, со всеми службами, а не только ядро — и это хорошая замена публичным мессенджерам.</p>
+        <p>А потом взялся за клиент: настроил Element и переделал его мобильное приложение под свой сервер. Ничего не нужно вводить вручную — установил и сразу оказался дома.</p>
       </div>
       <div class="side">
         <ul class="done">
           <li><b>Весь сервер</b>Все службы развёрнуты и настроены, а не только базовый сервер.</li>
-          <li><b>Своё приложение</b>Мобильный клиент, доработанный под этот сервер.</li>
+          <li><b>Своё приложение</b>Мобильный Element, доработанный под этот сервер.</li>
           <li><b>Данные у себя</b>Переписка хранится на собственном сервере.</li>
         </ul>
         <ul class="stack" aria-label="Технологии">
-          <li>Matrix</li><li>Linux</li><li>TLS</li><li>мобильная сборка</li>
+          <li>Matrix</li><li>Synapse</li><li>Element</li><li>Linux</li><li>TLS</li><li>Android</li>
         </ul>
       </div>
     </div>
@@ -354,32 +415,54 @@ footer a{color:var(--muted-night)!important}
   </article>
 
   <section class="wrap skills" id="skills" aria-labelledby="skills-h">
-    <h2 id="skills-h">Что умею</h2>
+    <h2 id="skills-h">Что умею, на пальцах</h2>
     <div class="skill-grid">
       <section>
-        <h3>Операционные системы</h3>
-        <p>Установка Windows и Linux на компьютеры и серверы, включая Astra Linux.</p>
+        <h3>Серверы и виртуалки</h3>
+        <p>Windows Server 2008 R2 и 2019 знаю вдоль и поперёк. Active Directory настроить, DNS поднять, DHCP раздать — без проблем. VMware ESXi — рабочая лошадка. Ставлю системы и драйверы на рабочие места и серверы, включая Astra Linux.</p>
+        <ul class="stack"><li>Windows Server</li><li>Active Directory</li><li>DNS</li><li>DHCP</li><li>VMware ESXi</li><li>Astra Linux</li></ul>
       </section>
       <section>
-        <h3>Драйверы и железо</h3>
-        <p>Подбор и настройка драйверов, чтобы все компоненты работали как надо.</p>
+        <h3>Железо и сеть</h3>
+        <p>MikroTik, Cisco, Eltex, D-Link, TP-Link — всё в руках держал. VLAN нарубить, маршруты прописать, pfSense или Kerio Control поставить на входе — делал не раз.</p>
+        <ul class="stack"><li>MikroTik</li><li>Cisco</li><li>Eltex</li><li>D-Link</li><li>TP-Link</li><li>pfSense</li><li>Kerio Control</li></ul>
       </section>
       <section>
-        <h3>Серверы</h3>
-        <p>Установка и настройка серверного оборудования с упором на безопасность и стабильность.</p>
+        <h3>Веб и свои «облака»</h3>
+        <p>Хостил сайты на IIS и даже прикручивал туда WordPress (да, это извращение, но работает). Поднимал Nextcloud и OnlyOffice, чтобы у людей были свои облака, администрировал 1С.</p>
+        <ul class="stack"><li>IIS</li><li>WordPress</li><li>Nextcloud</li><li>OnlyOffice</li><li>1С</li></ul>
       </section>
       <section>
-        <h3>Коммутаторы</h3>
-        <p>Администрирование Eltex, D-Link, TP-Link и Cisco.</p>
-      </section>
-      <section>
-        <h3>Информационные системы</h3>
-        <p>Nextcloud, 1С и другие: доступность, резервирование, права доступа.</p>
+        <h3>Связь</h3>
+        <p>Разворачивал сервер Matrix на Synapse и настраивал клиент Element. Хорошая замена публичным мессенджерам.</p>
+        <ul class="stack"><li>Matrix</li><li>Synapse</li><li>Element</li></ul>
       </section>
       <section>
         <h3>Разработка</h3>
-        <p>Python, веб-интерфейсы, боты для мессенджеров, развёртывание на Linux.</p>
+        <p>Пишу простых ботов для Telegram на Python. Пару раз ковырял Android-приложения — скорее для себя, но база есть. Проекты выше — тоже мои.</p>
+        <ul class="stack"><li>Python</li><li>Telegram-боты</li><li>Android</li></ul>
       </section>
+      <section>
+        <h3>Мультимедиа</h3>
+        <p>Владею Premiere Pro и After Effects. Могу и ролик смонтировать, если начальство попросит.</p>
+        <ul class="stack"><li>Premiere Pro</li><li>After Effects</li></ul>
+      </section>
+    </div>
+  </section>
+
+  <section class="wrap helper" id="helper" aria-labelledby="helper-h">
+    <div class="helper-card">
+      <div>
+        <h2 id="helper-h">Помощник сетевика</h2>
+        <p>Собрал инструменты, которые сам держу под рукой: IP-калькулятор, разбивка сети на подсети, генератор VLAN для Cisco, Eltex, D-Link и MikroTik, справочник портов. Всё считается в браузере.</p>
+        <a class="btn btn-main" href="/net.html">Открыть помощника</a>
+      </div>
+      <div id="mini-calc">
+        <label for="mini-in">Попробуйте прямо здесь</label>
+        <input id="mini-in" type="text" value="192.168.20.77/26" autocomplete="off" spellcheck="false" inputmode="decimal">
+        <p class="mini-err" id="mini-err" role="status" aria-live="polite"></p>
+        <dl class="mini-out" id="mini-out" aria-live="polite"></dl>
+      </div>
     </div>
   </section>
 </main>
@@ -454,5 +537,6 @@ footer a{color:var(--muted-night)!important}
   });
 })();
 </script>
+<script src="/net.js"></script>
 </body>
 </html>
