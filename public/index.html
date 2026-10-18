@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Видеонаблюдение и сайты в Керчи — Павел, 8 989 629-69-39</title>
-<meta name="description" content="Установка видеонаблюдения в Керчи: просмотр камер с телефона, распознавание людей и машин. Создание сайтов любой сложности. Бесплатный выезд и расчёт.">
+<title>Павел Андреевич — камеры, серверы, сети</title>
+<meta name="description" content="Проекты Павла из Керчи: домашняя система видеонаблюдения с распознаванием людей и машин, панель RTSP для Astra Linux, свой сервер Matrix, этот сайт с уведомлениями в MAX.">
 <meta name="theme-color" content="#12161C">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
@@ -18,14 +18,14 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--day);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--day);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 a{color:var(--link-day)}a:hover{color:var(--ink)}
 :focus-visible{outline:3px solid var(--car);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:20px;padding-right:20px}
 h1,h2,h3{margin:0}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);line-height:1.1;letter-spacing:-.01em}
-.lead{font-size:clamp(17px,1.6vw,19px);max-width:620px}
+.lead{font-size:clamp(17px,1.6vw,19px);max-width:640px}
 
 /* ---------- ночь ---------- */
 .night{background:var(--night);color:var(--on-night)}
@@ -37,12 +37,11 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);l
 .nav{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:15px}
 .nav a{color:var(--muted-night);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
 .nav a:hover{color:var(--on-night)}
-.tel{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--night-line);border-radius:10px;font-weight:600;text-decoration:none;color:var(--on-night)!important;white-space:nowrap}
 
 .hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;align-items:center;padding-top:56px;padding-bottom:88px}
 .where{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--muted-night);margin-bottom:22px}
 .where i{width:8px;height:8px;border-radius:50%;background:var(--car)}
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,8vw,56px);line-height:1.04;letter-spacing:-.02em}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,8vw,56px);line-height:1.05;letter-spacing:-.02em}
 .hero h1 span{display:block}
 .hero p{color:#C7CDD3;margin:24px 0 32px}
 .ctas{display:flex;flex-wrap:wrap;gap:12px}
@@ -53,11 +52,9 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);l
 .btn-ghost{border:1px solid var(--night-line);color:var(--on-night)!important}
 .btn-ghost:hover{border-color:var(--muted-night)}
 
-/* монитор */
 .monitor{margin:0}
 .screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0A0D11;box-shadow:0 0 0 1px var(--night-line),0 30px 80px -30px rgba(0,0,0,.8)}
 .screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:feed 16s infinite}
-.screen img:nth-of-type(1){animation-delay:0s}
 .screen img:nth-of-type(2){animation-delay:4s}
 .screen img:nth-of-type(3){animation-delay:8s}
 .screen img:nth-of-type(4){animation-delay:12s}
@@ -79,102 +76,93 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.2vw,44px);l
 .key i{width:14px;height:10px;border:2px solid}
 .key.p i{border-color:var(--person)}.key.c i{border-color:var(--car)}
 
-/* загрузка: монитор включается, строки заголовка поднимаются */
 .js .hero h1 span,.js .hero .where,.js .hero p,.js .hero .ctas{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
 .js .hero .where{animation-delay:.05s}
 .js .hero h1 span:nth-child(1){animation-delay:.12s}
 .js .hero h1 span:nth-child(2){animation-delay:.24s}
-.js .hero p{animation-delay:.4s}
-.js .hero .ctas{animation-delay:.5s}
+.js .hero h1 span:nth-child(3){animation-delay:.36s}
+.js .hero p{animation-delay:.5s}
+.js .hero .ctas{animation-delay:.6s}
 @keyframes rise{to{opacity:1;transform:none}}
 .js .screen{animation:poweron .9s .35s both}
 @keyframes poweron{0%{clip-path:inset(49.5% 0 49.5% 0);filter:brightness(3)}45%{clip-path:inset(49.5% 0 49.5% 0);filter:brightness(3)}70%{clip-path:inset(0 0 0 0);filter:brightness(1.6)}100%{clip-path:inset(0 0 0 0);filter:none}}
 
-/* ---------- день ---------- */
-.day-intro{padding-top:96px;padding-bottom:24px}
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px 64px;align-items:start}
-.split .lead{color:var(--muted);margin-top:16px}
-.section{padding-top:72px;padding-bottom:72px}
-.section + .section{border-top:1px solid var(--day-line)}
+/* ---------- день: проекты ---------- */
+.intro{padding-top:96px;padding-bottom:16px}
+.intro .lead{color:var(--muted);margin-top:16px}
+.case{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--day-line)}
+.case-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;align-items:end;margin-bottom:28px}
+.case-head h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,32px);line-height:1.15}
+.status{font-size:14px;color:var(--muted);display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:#2E8B57}
+.status.wip i{background:var(--car)}
+.case-body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px 64px;align-items:start}
+.story p{margin:0 0 16px;max-width:640px}
+.story p.hook{font-size:clamp(18px,1.8vw,21px);font-weight:500;color:var(--ink)}
+.walls{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.walls li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:baseline;font-size:16px}
+.walls s{text-decoration:none;color:var(--person);font-weight:600;white-space:nowrap}
+.walls s::before{content:"✕ "}
+.walls span{color:var(--muted)}
+.walls b{color:var(--ink);font-weight:600}
+.side{display:flex;flex-direction:column;gap:20px}
+.done{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.done li{padding:12px 0;border-bottom:1px solid var(--day-line);font-size:16px}
+.done li b{display:block;font-size:15px;color:var(--muted);font-weight:500}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.stack li{font-size:14px;padding:4px 10px;border-radius:6px;background:var(--day-2);color:var(--ink)}
 
-.day-intro .split{grid-template-columns:minmax(0,1fr);gap:36px}
-.feat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
-.feat li{padding:22px 0;border-top:1px solid var(--day-line);display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto 1fr;align-content:start;gap:4px 16px}
-.feat svg{grid-row:span 2;margin-top:2px}
-.feat h3{font-size:19px;font-weight:600}
-.feat p{margin:0;color:var(--muted)}
-.note{margin-top:28px;padding:18px 20px;border-radius:12px;background:var(--day-2);color:var(--muted);font-size:16px}
-.note b{color:var(--ink)}
+/* схема прохода сигнала */
+.route{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.route li{display:flex;align-items:center;gap:8px}
+.route li + li::before{content:"";width:22px;height:2px;background:var(--ink);flex:none}
+.node{padding:10px 14px;border:2px solid var(--ink);border-radius:8px;font-size:15px;line-height:1.3;background:var(--day)}
+.node small{display:block;color:var(--muted);font-size:13px}
+.node.hot{border-color:var(--car);background:#FBE9CF}
 
-/* прайс */
-.price{list-style:none;margin:32px 0 0;padding:0}
-.price li{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding:20px 18px;margin:0 -18px;border-radius:6px}
-.price li + li{border-top:1px solid var(--day-line)}
-.price h3{font-size:19px;font-weight:600}
-.price p{grid-column:1;margin:0;color:var(--muted);font-size:16px;max-width:620px}
-.price .sum{grid-row:1/span 2;grid-column:2;align-self:center;font-family:var(--display);font-weight:500;font-size:clamp(18px,2.2vw,24px);white-space:nowrap;font-variant-numeric:tabular-nums}
-.price .sum small{font-family:var(--body);font-size:15px;font-weight:400;color:var(--muted)}
-/* рамка распознавания при наведении */
-.price li::before{content:"";position:absolute;inset:4px;border:2px solid var(--car);border-radius:4px;opacity:0;clip-path:inset(0 100% 100% 0);transition:clip-path .35s ease,opacity .2s}
-.price li:hover::before{opacity:1;clip-path:inset(0 0 0 0)}
-.price li::after{content:attr(data-tag);position:absolute;left:4px;top:-18px;background:var(--car);color:#1A1205;font-size:12px;font-weight:600;padding:1px 7px;border-radius:3px 3px 0 0;opacity:0;transition:opacity .2s .15s}
-.price li:hover::after{opacity:1}
-.terms{margin:20px 0 0;color:var(--muted);font-size:15px}
+/* навыки */
+.skills{padding-top:72px;padding-bottom:88px;border-top:1px solid var(--day-line)}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px;margin-top:32px}
+.skill-grid section{padding:20px 0;border-top:1px solid var(--day-line)}
+.skill-grid h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.skill-grid p{margin:0;color:var(--muted);font-size:16px}
 
-.proof{display:flex;gap:16px;align-items:center;margin-top:28px;padding:18px 20px;border-radius:12px;border:1px dashed var(--day-line);font-size:16px;color:var(--muted)}
-.proof svg{flex:none}
-
-.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:s}
-.steps li{counter-increment:s;padding-top:18px;border-top:2px solid var(--ink)}
-.steps li::before{content:counter(s);display:block;font-family:var(--display);font-weight:700;font-size:28px;margin-bottom:8px}
-.steps h3{font-size:18px;font-weight:600;margin-bottom:6px}
-.steps p{margin:0;color:var(--muted);font-size:16px}
-
-.faq{max-width:820px;margin-top:28px;border-top:1px solid var(--day-line)}
-.faq details{border-bottom:1px solid var(--day-line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-size:18px;font-weight:600}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";flex:none;width:12px;height:12px;border-right:2px solid;border-bottom:2px solid;transform:rotate(45deg) translateY(-3px);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(-135deg) translateX(-3px)}
-.faq details p{margin:0 0 20px;color:var(--muted);max-width:680px}
-.faq details[open] p{animation:open .25s ease}
-@keyframes open{from{opacity:0;transform:translateY(-6px)}}
-
-/* ---------- снова ночь: заявка ---------- */
+/* ---------- снова ночь ---------- */
 .contact{padding-top:88px;padding-bottom:88px}
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
 .contact p{color:#C7CDD3}
-.bigtel{display:inline-block;margin-top:18px;font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,36px);text-decoration:none;color:var(--on-night)!important}
-#lead-form{background:var(--night-2);border:1px solid var(--night-line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
+#msg-form{background:var(--night-2);border:1px solid var(--night-line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:14px;color:var(--muted-night)}
-#lead-form input,#lead-form select,#lead-form textarea{min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--night-line);background:var(--night);color:var(--on-night);font:inherit;width:100%}
-#lead-form textarea{resize:vertical}
-#lead-form input:focus,#lead-form select:focus,#lead-form textarea:focus{outline:2px solid var(--car);outline-offset:1px}
-#lead-form button:disabled{opacity:.6;cursor:wait}
+#msg-form input,#msg-form select,#msg-form textarea{min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--night-line);background:var(--night);color:var(--on-night);font:inherit;width:100%}
+#msg-form textarea{resize:vertical}
+#msg-form input:focus,#msg-form select:focus,#msg-form textarea:focus{outline:2px solid var(--car);outline-offset:1px}
+#msg-form button:disabled{opacity:.6;cursor:wait}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted-night)}
-#lead-form .agree input{padding:0;border:0;width:22px;height:22px;min-height:0;margin:2px 0 0;flex:none;accent-color:var(--car)}
+#msg-form .agree input{padding:0;border:0;width:22px;height:22px;min-height:0;margin:2px 0 0;flex:none;accent-color:var(--car)}
 #f-status{margin:0;font-size:15px;min-height:1px}
 .ok{color:#9FD39A}.err{color:#FF9D8A}
 footer{border-top:1px solid var(--night-line);padding:24px 0;font-size:14px;color:var(--muted-night)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 footer a{color:var(--muted-night)!important}
 
-@media (min-width:901px){.hero h1{font-size:clamp(34px,3.9vw,56px)}}
+@media (min-width:901px){.hero h1{font-size:clamp(34px,3.7vw,54px)}}
 @media (max-width:900px){
-  .hero,.split,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .route{flex-wrap:wrap}
+  .hero,.contact-grid,.case-body{grid-template-columns:minmax(0,1fr)}
   .hero{gap:40px;padding-top:32px;padding-bottom:64px}
-  .feat{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
-  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .day-intro{padding-top:72px}
+  .skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+  .intro{padding-top:72px}
 }
 @media (max-width:560px){
-  .steps,.feat{grid-template-columns:minmax(0,1fr)}
-  .price li{grid-template-columns:minmax(0,1fr);margin:0 -10px;padding:18px 10px}
-  .price .sum{grid-row:auto;grid-column:1;margin-top:6px}
-  .nav{order:3;width:100%}
-  #lead-form{padding:20px}
+  .skill-grid{grid-template-columns:minmax(0,1fr)}
+  .case-head{grid-template-columns:minmax(0,1fr)}
+  .route{flex-direction:column;align-items:flex-start}
+  .route li{flex-direction:column;align-items:flex-start}
+  .route li + li::before{width:2px;height:16px;margin-left:20px}
+  .walls li{grid-template-columns:minmax(0,1fr);gap:2px}
+  #msg-form{padding:20px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -191,25 +179,25 @@ footer a{color:var(--muted-night)!important}
   <header class="wrap top">
     <a class="brand" href="#top" id="top">
       <b>Павел Андреевич</b>
-      <span>камеры и сайты в Керчи</span>
+      <span>камеры, серверы, сети</span>
     </a>
     <nav class="nav" aria-label="Разделы">
-      <a href="#cctv">Видеонаблюдение</a>
-      <a href="#sites">Сайты</a>
-      <a href="#how">Как работаю</a>
-      <a href="#faq">Вопросы</a>
+      <a href="#cams">Камеры дома</a>
+      <a href="#rtspatom">rtspAtom</a>
+      <a href="#matrix">Matrix</a>
+      <a href="#site">Этот сайт</a>
+      <a href="#skills">Что умею</a>
     </nav>
-    <a class="tel" href="tel:+79896296939">8 989 629-69-39</a>
   </header>
 
   <section class="wrap hero">
     <div>
-      <div class="where"><i></i>Керчь и окрестности</div>
-      <h1><span>Ставлю камеры.</span><span>Делаю сайты.</span></h1>
-      <p class="lead">Видеонаблюдение, которое само замечает людей и машины и показывает картинку на телефоне. И сайты любой сложности — от визитки до личного кабинета.</p>
+      <div class="where"><i></i>Керчь</div>
+      <h1><span>Нет белого IP.</span><span>Нет интернета.</span><span>Всё равно работает.</span></h1>
+      <p class="lead">Я Павел, системный администратор. Собираю видеонаблюдение, серверы и сайты своими руками — и люблю задачи, где стандартное решение не подходит. Здесь четыре таких истории.</p>
       <div class="ctas">
-        <a class="btn btn-main" href="#contact">Оставить заявку</a>
-        <a class="btn btn-ghost" href="#cctv-prices">Посмотреть цены</a>
+        <a class="btn btn-main" href="#cams">Читать истории</a>
+        <a class="btn btn-ghost" href="#contact">Написать мне</a>
       </div>
     </div>
     <figure class="monitor">
@@ -223,7 +211,7 @@ footer a{color:var(--muted-night)!important}
         <div class="rec" aria-hidden="true"><i></i>REC</div>
       </div>
       <figcaption>
-        <span>Кадры с моей рабочей системы</span>
+        <span>Живые кадры с моей системы</span>
         <span class="key p"><i></i>человек</span>
         <span class="key c"><i></i>машина</span>
       </figcaption>
@@ -232,146 +220,148 @@ footer a{color:var(--muted-night)!important}
 </div>
 
 <main>
-  <section class="wrap day-intro" id="cctv">
-    <div class="split">
-      <div>
-        <h2>Видеонаблюдение под ключ</h2>
-        <p class="lead">Подберу камеры, проложу кабель, настрою запись и доступ с телефона. Работаю с домами, дачами, магазинами и предприятиями.</p>
-      </div>
-      <ul class="feat">
-        <li>
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21V12h6v9"/></svg>
-          <h3>Дом и дача</h3>
-          <p>Камеры по периметру, ворота, двор. Ночная съёмка в ИК-режиме.</p>
-        </li>
-        <li>
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18l-1.5 5h-15z"/><path d="M5 12v8h14v-8"/><path d="M10 20v-5h4v5"/></svg>
-          <h3>Магазины и сервисы</h3>
-          <p>Касса, зал, склад, вход. Архив, к которому легко вернуться в спорной ситуации.</p>
-        </li>
-        <li>
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
-          <h3>Камеры в телефоне</h3>
-          <p>Смотрите из любой точки без белого IP и сложных настроек.</p>
-        </li>
-        <li>
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
-          <h3>Запись на ваш компьютер</h3>
-          <p>Без отдельного регистратора: нужен только коммутатор для камер.</p>
-        </li>
-        <li>
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M9 4v16"/><path d="M4 10h5"/></svg>
-          <h3>Распознавание</h3>
-          <p>Система отличает людей и машины от веток и кошек и не дёргает зря.</p>
-        </li>
-        <li>
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
-          <h3>Для организаций</h3>
-          <p>Системы на Astra Linux и других отечественных ОС, работа в закрытых сетях.</p>
-        </li>
-      </ul>
+  <section class="wrap intro" aria-labelledby="projects-h">
+    <h2 id="projects-h">Проекты</h2>
+    <p class="lead">Всё сделано в свободное время — для себя и чтобы разобраться, как это устроено.</p>
+  </section>
+
+  <!-- 1. Камеры дома -->
+  <article class="wrap case" id="cams" aria-labelledby="cams-h">
+    <div class="case-head">
+      <h3 id="cams-h">«Камеры дома»: видеонаблюдение из обычного компьютера</h3>
+      <span class="status"><i></i>Работает каждый день</span>
     </div>
-    <p class="note"><b>Уведомления в MAX</b> со снимком события настраиваю для самозанятых, ИП и организаций: по правилам MAX ботов создают только они.</p>
-  </section>
-
-  <section class="wrap section" id="cctv-prices" aria-labelledby="cctv-prices-h">
-    <h2 id="cctv-prices-h">Цены на видеонаблюдение</h2>
-    <ul class="price">
-      <li data-tag="камера">
-        <h3>Установка одной камеры</h3>
-        <p>Монтаж, кабель до 10 м, подключение и настройка.</p>
-        <div class="sum">от 2 500 ₽</div>
-      </li>
-      <li data-tag="2 камеры">
-        <h3>Старт</h3>
-        <p>Две камеры, запись, просмотр с телефона.</p>
-        <div class="sum">от 6 000 ₽</div>
-      </li>
-      <li data-tag="4 камеры">
-        <h3>Дом целиком</h3>
-        <p>Четыре камеры, доступ из любой точки, распознавание людей и машин.</p>
-        <div class="sum">от 12 000 ₽</div>
-      </li>
-      <li data-tag="8+ камер">
-        <h3>Бизнес</h3>
-        <p>От восьми камер, большой архив, доступ для сотрудников.</p>
-        <div class="sum">от 25 000 ₽</div>
-      </li>
-      <li data-tag="ПК">
-        <h3>Запись на ваш компьютер</h3>
-        <p>Установка и настройка программы вместо регистратора.</p>
-        <div class="sum">от 3 000 ₽</div>
-      </li>
-      <li data-tag="поддержка">
-        <h3>Обслуживание</h3>
-        <p>Удалённая помощь, проверка записи, обновления.</p>
-        <div class="sum">от 1 000 ₽ <small>в месяц</small></div>
-      </li>
-    </ul>
-    <p class="terms">Цены за работу. Оборудование — по смете: подберу под бюджет или поставлю ваше. Выезд и расчёт бесплатно. Срок хранения записи зависит от диска и числа камер.</p>
-  </section>
-
-  <section class="wrap section" id="sites" aria-labelledby="sites-h">
-    <div class="split">
-      <div>
-        <h2 id="sites-h">Сайты любой сложности</h2>
-        <p class="lead">Делаю сайты, которые работают на бизнес: быстро грузятся, нормально выглядят на телефоне и присылают заявки прямо в мессенджер.</p>
-      </div>
-      <div>
-        <ul class="price" style="margin-top:0">
-          <li data-tag="визитка">
-            <h3>Сайт-визитка</h3>
-            <p>Одна-три страницы: кто вы, что делаете, как связаться.</p>
-            <div class="sum">от 10 000 ₽</div>
-          </li>
-          <li data-tag="лендинг">
-            <h3>Лендинг</h3>
-            <p>Продающая страница под одну услугу, с формой заявки.</p>
-            <div class="sum">от 15 000 ₽</div>
-          </li>
-          <li data-tag="компания">
-            <h3>Сайт компании</h3>
-            <p>Несколько разделов, услуги, новости, контакты.</p>
-            <div class="sum">от 50 000 ₽</div>
-          </li>
-          <li data-tag="магазин">
-            <h3>Интернет-магазин</h3>
-            <p>Каталог, корзина, приём заказов и оплаты.</p>
-            <div class="sum">от 70 000 ₽</div>
-          </li>
-          <li data-tag="сервис">
-            <h3>Веб-сервис</h3>
-            <p>Личные кабинеты, панели управления, интеграции, боты.</p>
-            <div class="sum">от 100 000 ₽</div>
-          </li>
+    <div class="case-body">
+      <div class="story">
+        <p class="hook">Обычный компьютер с Windows 11 вместо видеорегистратора: записывает камеры, сам замечает людей и машины и показывает всё на телефоне.</p>
+        <p>Написал на Python сервер, который забирает потоки с камер в домашней сети, пишет их на диск и раздаёт через веб-интерфейс на React. Для настроек сделал отдельное окно программы с журналом событий и несколькими пользователями.</p>
+        <p>Самое интересное было дальше: как смотреть всё это с телефона, если провайдер не даёт белый IP, а VPN включать каждый раз лень. На пути встали три стены:</p>
+        <ul class="walls">
+          <li><s>Белый IP</s><span>его дома нет. <b>Решение:</b> домашний компьютер сам держит соединение с моим сервером в Москве, а тот открывает камеры по обычной ссылке.</span></li>
+          <li><s>Tailscale</s><span>с мобильного интернета не подключался. <b>Решение:</b> отказался от VPN, доступ идёт через тот же сервер с HTTPS.</span></li>
+          <li><s>Telegram</s><span>уведомления туда не доходили. <b>Решение:</b> перевёл оповещения на «Алису» в Яндекс Станциях, ВКонтакте и бота в MAX.</span></li>
         </ul>
-        <div class="proof">
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9A4500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
-          <span>Этот сайт тоже сделал я. Заявка из формы ниже приходит мне в MAX за секунду.</span>
-        </div>
+      </div>
+      <div class="side">
+        <ul class="done">
+          <li><b>Распознавание</b>Отличает людей и машины от веток и кошек — рамки на кадрах вверху настоящие.</li>
+          <li><b>Клип события</b>Сохраняет 10 секунд до срабатывания и минуту после, чтобы было видно, откуда человек пришёл.</li>
+          <li><b>Ночью</b>Камеры уходят в ИК-режим, распознавание продолжает работать.</li>
+        </ul>
+        <ul class="stack" aria-label="Технологии">
+          <li>Python</li><li>React</li><li>RTSP</li><li>Windows 11</li><li>Ubuntu</li><li>Caddy</li><li>MAX Bot API</li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <section class="wrap section" id="how" aria-labelledby="how-h">
-    <h2 id="how-h">Как работаю</h2>
-    <ol class="steps">
-      <li><h3>Заявка</h3><p>Пишете или звоните, задаю пару вопросов о задаче.</p></li>
-      <li><h3>Расчёт</h3><p>Выезжаю на объект или созваниваемся, называю точную цену.</p></li>
-      <li><h3>Работа</h3><p>Монтирую систему или делаю сайт, показываю промежуточный результат.</p></li>
-      <li><h3>Сдача</h3><p>Показываю, как пользоваться, и остаюсь на связи.</p></li>
+    <ol class="route" style="margin-top:40px" aria-label="Путь видео от камеры до телефона">
+      <li><span class="node">Камеры<small>домашняя сеть</small></span></li>
+      <li><span class="node">ПК на Windows 11<small>запись и распознавание</small></span></li>
+      <li><span class="node hot">Сервер в Москве<small>HTTPS, без белого IP</small></span></li>
+      <li><span class="node">Телефон<small>браузер, MAX, Алиса</small></span></li>
     </ol>
-  </section>
+  </article>
 
-  <section class="wrap section" id="faq" aria-labelledby="faq-h">
-    <h2 id="faq-h">Вопросы</h2>
-    <div class="faq">
-      <details><summary>Нужен ли интернет на объекте?</summary><p>Для записи нет, всё хранится на месте. Для просмотра с телефона нужен любой интернет, белый IP не требуется.</p></details>
-      <details><summary>Сколько хранится запись?</summary><p>Зависит от объёма диска и количества камер. Подберу вариант под нужный срок.</p></details>
-      <details><summary>Обязательно покупать регистратор?</summary><p>Нет. Систему можно запустить на вашем компьютере, если докупить коммутатор для камер.</p></details>
-      <details><summary>Можно поставить мои старые камеры?</summary><p>Чаще всего да, если они поддерживают RTSP. Проверю на выезде.</p></details>
-      <details><summary>Сколько делается сайт?</summary><p>Визитка и лендинг — от нескольких дней, сайт компании — от двух недель, магазин и сервис — по договорённости после обсуждения задачи.</p></details>
-      <details><summary>Кто будет размещать сайт и домен?</summary><p>Помогу купить домен и хостинг на ваше имя, всё настрою. Сайт и доступы остаются у вас.</p></details>
+  <!-- 2. rtspAtom -->
+  <article class="wrap case" id="rtspatom" aria-labelledby="rtsp-h">
+    <div class="case-head">
+      <h3 id="rtsp-h">rtspAtom: панель камер для компьютера без интернета</h3>
+      <span class="status wip"><i></i>В разработке</span>
+    </div>
+    <div class="case-body">
+      <div class="story">
+        <p class="hook">Как поставить программу, если у компьютера нет интернета вообще, а операционная система — Astra Linux Special Edition «Смоленск»?</p>
+        <p>rtspAtom — панель для управления RTSP-камерами под Astra Linux SE 1.8. Привычное «apt install» тут не работает: каждую зависимость нужно найти, скачать заранее на другой машине и собрать в пакет, который встанет без единого обращения в сеть.</p>
+        <p>Это хорошая школа: начинаешь понимать, из чего на самом деле состоит программа и что она тянет за собой.</p>
+      </div>
+      <div class="side">
+        <ul class="done">
+          <li><b>Офлайн-установка</b>Все зависимости едут вместе с программой.</li>
+          <li><b>Отечественная ОС</b>Astra Linux SE 1.8 «Смоленск».</li>
+                  </ul>
+        <ul class="stack" aria-label="Технологии">
+          <li>Astra Linux</li><li>RTSP</li><li>офлайн-пакеты</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3. Matrix -->
+  <article class="wrap case" id="matrix" aria-labelledby="matrix-h">
+    <div class="case-head">
+      <h3 id="matrix-h">Свой мессенджер на Matrix</h3>
+      <span class="status"><i></i>Развёрнут</span>
+    </div>
+    <div class="case-body">
+      <div class="story">
+        <p class="hook">Переписка, которая не зависит ни от чьих блокировок и не лежит на чужих серверах.</p>
+        <p>Развернул собственный защищённый сервер Matrix — открытого протокола для обмена сообщениями. Сообщения шифруются на устройствах участников, а сам сервер стоит там, где решаю я.</p>
+        <p>Подключиться можно из любого клиента Matrix: на телефоне, компьютере или в браузере.</p>
+      </div>
+      <div class="side">
+        <ul class="done">
+          <li><b>Сквозное шифрование</b>Содержимое переписки видят только участники.</li>
+          <li><b>Свой сервер</b>Данные под собственным контролем.</li>
+          <li><b>Открытый протокол</b>Клиенты для всех платформ.</li>
+        </ul>
+        <ul class="stack" aria-label="Технологии">
+          <li>Matrix</li><li>Linux</li><li>TLS</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4. Этот сайт -->
+  <article class="wrap case" id="site" aria-labelledby="site-h">
+    <div class="case-head">
+      <h3 id="site-h">Этот сайт</h3>
+      <span class="status"><i></i>Вы на нём</span>
+    </div>
+    <div class="case-body">
+      <div class="story">
+        <p class="hook">Сообщение из формы внизу страницы приходит мне в MAX через секунду после отправки.</p>
+        <p>Сервер написан на чистом Python, без единой сторонней библиотеки. Он встал рядом с двумя другими сайтами на том же сервере и не задел их: HTTPS выдаёт Caddy, а каждый сайт живёт в своей папке.</p>
+        <p>Отдельное приключение — API MAX: он работает на сертификате Минцифры, которого нет в Ubuntu. Пришлось подключить его только для этого сайта, не трогая систему.</p>
+      </div>
+      <div class="side">
+        <ul class="done">
+          <li><b>Без cookie и аналитики</b>Шрифты и картинки отдаются с этого же сервера.</li>
+          <li><b>Защита от спама</b>Ловушка для ботов и ограничение частоты сообщений.</li>
+          <li><b>По 152-ФЗ</b>Согласие, политика, автоудаление сообщений через год.</li>
+        </ul>
+        <ul class="stack" aria-label="Технологии">
+          <li>Python</li><li>Caddy</li><li>MAX Bot API</li><li>HTML/CSS</li><li>systemd</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <section class="wrap skills" id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Что умею</h2>
+    <div class="skill-grid">
+      <section>
+        <h3>Операционные системы</h3>
+        <p>Установка Windows и Linux на компьютеры и серверы, включая Astra Linux.</p>
+      </section>
+      <section>
+        <h3>Драйверы и железо</h3>
+        <p>Подбор и настройка драйверов, чтобы все компоненты работали как надо.</p>
+      </section>
+      <section>
+        <h3>Серверы</h3>
+        <p>Установка и настройка серверного оборудования с упором на безопасность и стабильность.</p>
+      </section>
+      <section>
+        <h3>Коммутаторы</h3>
+        <p>Администрирование Eltex, D-Link, TP-Link и Cisco.</p>
+      </section>
+      <section>
+        <h3>Информационные системы</h3>
+        <p>Nextcloud, 1С и другие: доступность, резервирование, права доступа.</p>
+      </section>
+      <section>
+        <h3>Разработка</h3>
+        <p>Python, веб-интерфейсы, боты для мессенджеров, развёртывание на Linux.</p>
+      </section>
     </div>
   </section>
 </main>
@@ -380,63 +370,52 @@ footer a{color:var(--muted-night)!important}
   <section class="wrap contact" id="contact" aria-labelledby="contact-h">
     <div class="contact-grid">
       <div>
-        <h2 id="contact-h">Оставьте заявку</h2>
-        <p class="lead">Перезвоню в течение часа. Осмотр объекта и расчёт бесплатно.</p>
-        <a class="bigtel" href="tel:+79896296939">8 989 629-69-39</a>
-        <p style="font-size:15px;color:var(--muted-night);margin-top:6px">Звонки и MAX по этому номеру</p>
+        <h2 id="contact-h">Написать мне</h2>
+        <p class="lead">Есть вопрос по проекту, хотите обсудить идею или позвать рассказать о том, как это устроено? Напишите — сообщение сразу придёт мне в MAX.</p>
       </div>
-      <form id="lead-form" novalidate>
+      <form id="msg-form" novalidate>
         <div class="hp" aria-hidden="true"><label for="f-site">Не заполняйте</label><input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <div class="field">
           <label for="f-name">Имя</label>
           <input id="f-name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться" required>
         </div>
         <div class="field">
-          <label for="f-phone">Телефон</label>
+          <label for="f-phone">Телефон для ответа</label>
           <input id="f-phone" name="phone" type="tel" maxlength="20" autocomplete="tel" placeholder="+7" required>
         </div>
         <div class="field">
-          <label for="f-obj">Что нужно</label>
+          <label for="f-obj">Тема</label>
           <select id="f-obj" name="object">
-            <optgroup label="Видеонаблюдение">
-              <option>Камеры — дом или дача</option>
-              <option>Камеры — квартира</option>
-              <option>Камеры — магазин или офис</option>
-              <option>Камеры — склад или производство</option>
-            </optgroup>
-            <optgroup label="Сайты">
-              <option>Сайт — визитка или лендинг</option>
-              <option>Сайт компании</option>
-              <option>Интернет-магазин</option>
-              <option>Веб-сервис или сложный проект</option>
-            </optgroup>
+            <option>Вопрос по проекту</option>
+            <option>Обсудить идею</option>
+            <option>Пригласить рассказать о проекте</option>
             <option>Другое</option>
           </select>
         </div>
         <div class="field">
-          <label for="f-comment">Комментарий (необязательно)</label>
-          <textarea id="f-comment" name="comment" maxlength="1000" rows="3" placeholder="Сколько камер, адрес, или что за сайт нужен"></textarea>
+          <label for="f-comment">Сообщение</label>
+          <textarea id="f-comment" name="comment" maxlength="1000" rows="4" placeholder="Напишите, о чём хотите поговорить"></textarea>
         </div>
         <div class="agree">
           <input id="f-consent" name="consent" type="checkbox" required>
           <label for="f-consent">Даю <a href="/consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="/privacy.html" target="_blank">политикой</a></label>
         </div>
-        <button id="f-submit" class="btn btn-main" type="submit">Отправить заявку</button>
+        <button id="f-submit" class="btn btn-main" type="submit">Отправить сообщение</button>
         <p id="f-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
   <footer>
     <div class="wrap">
-      <span>© 2026 Павел Андреевич, Керчь</span>
-      <a href="/privacy.html">Политика обработки персональных данных</a>
+      <span>© 2026 Павел Андреевич. Личный некоммерческий сайт.</span>
+      <span><a href="https://github.com/atomicpel">GitHub</a> &nbsp; <a href="/privacy.html">Политика обработки персональных данных</a></span>
     </div>
   </footer>
 </div>
 
 <script>
 (function(){
-  var f=document.getElementById('lead-form'),b=document.getElementById('f-submit'),st=document.getElementById('f-status');
+  var f=document.getElementById('msg-form'),b=document.getElementById('f-submit'),st=document.getElementById('f-status');
   function show(t,c){st.textContent=t;st.className=c;}
   f.addEventListener('submit',function(e){
     e.preventDefault();
@@ -449,11 +428,11 @@ footer a{color:var(--muted-night)!important}
     fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
       .then(function(x){
-        if(x.ok){f.reset();show('Заявка отправлена. Перезвоню в течение часа.','ok');}
-        else show(x.j.error||'Заявка не отправилась. Позвоните: 8 989 629-69-39.','err');
+        if(x.ok){f.reset();show('Сообщение отправлено. Отвечу, как только смогу.','ok');}
+        else show(x.j.error||'Сообщение не отправилось. Попробуйте ещё раз позже.','err');
       })
-      .catch(function(){show('Нет связи с сервером. Позвоните: 8 989 629-69-39.','err');})
-      .finally(function(){b.disabled=false;b.textContent='Отправить заявку';});
+      .catch(function(){show('Нет связи с сервером. Попробуйте ещё раз позже.','err');})
+      .finally(function(){b.disabled=false;b.textContent='Отправить сообщение';});
   });
 })();
 </script>

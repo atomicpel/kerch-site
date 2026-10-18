@@ -49,7 +49,7 @@ PORT = int(os.environ.get("PORT", "8080"))
 TRUST_PROXY = os.environ.get("TRUST_PROXY", "1") == "1"
 
 RETENTION_DAYS = 365   # срок хранения заявок, как в политике
-CONSENT_VERSION = "2026-10-18"  # редакция текста согласия
+CONSENT_VERSION = "2026-10-18b"  # редакция текста согласия
 
 RATE_LIMIT = 5          # заявок
 RATE_WINDOW = 600       # за 10 минут с одного IP
@@ -188,7 +188,7 @@ class Handler(SimpleHTTPRequestHandler):
 
         ip = self.client_ip()
         if rate_limited(ip):
-            return self.reply(429, {"error": "Слишком много заявок. Позвоните: 8 989 629-69-39."})
+            return self.reply(429, {"error": "Слишком много сообщений. Попробуйте позже."})
 
         when = datetime.now(MSK).strftime("%d.%m.%Y %H:%M")
         lead = {"time": when, "ts": int(time.time()), "name": name, "phone": phone, "object": obj,
@@ -198,10 +198,10 @@ class Handler(SimpleHTTPRequestHandler):
             fh.write(json.dumps(lead, ensure_ascii=False) + "\n")
 
         text = (
-            "Новая заявка с сайта\n\n"
+            "Новое сообщение с сайта\n\n"
             f"Имя: {name}\n"
             f"Телефон: {phone}\n"
-            f"Услуга: {obj or '-'}\n"
+            f"Тема: {obj or '-'}\n"
             + (f"Комментарий: {comment}\n" if comment else "")
             + f"\n{when}"
         )
