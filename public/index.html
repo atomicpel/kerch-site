@@ -270,7 +270,7 @@ footer a{color:var(--muted-night)!important}
           <p>Новое изучаю, но к моде отношусь скептически: проверенное надёжнее.</p>
         </blockquote>
         <dl class="facts">
-          <dt>Стаж</dt><dd>16 лет</dd>
+          <dt>Стаж</dt><dd><span id="exp-years">18 лет</span>, с 2008 года</dd>
           <dt>Образование</dt><dd>Высшее, инженер вычислительных машин, комплексов, систем и сетей</dd>
           <dt>Город</dt><dd>Керчь</dd>
         </dl>
@@ -538,5 +538,13 @@ footer a{color:var(--muted-night)!important}
 })();
 </script>
 <script src="/net.js"></script>
+<script>
+(function(){
+  var e=document.getElementById('exp-years'); if(!e) return;
+  var n=new Date().getFullYear()-2008, m10=n%10, m100=n%100;
+  var w=(m10===1&&m100!==11)?'год':(m10>=2&&m10<=4&&(m100<12||m100>14))?'года':'лет';
+  e.textContent=n+' '+w;
+})();
+</script>
 </body>
 </html>
