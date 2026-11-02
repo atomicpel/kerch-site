@@ -86,5 +86,5 @@ sudo certbot --nginx -d ВАШ-ДОМЕН
 
 ## Где что править
 
-- Обо мне, проекты, навыки — `public/index.html`, блоки `#about`, `#cams`, `#rtspatom`, `#matrix`, `#site`, `#skills`.
+- Обо мне, проекты, навыки — `public/index.html`, блоки `#about`, `#skills`, `#experience`, `#cams`, `#rtspatom`, `#matrix`, `#site`.
 - Инструменты — `public/net.js` (логика) и `public/net.html` (страница).
